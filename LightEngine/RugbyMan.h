@@ -7,6 +7,10 @@ private:
 	float mStrength;
 	float mSprintStrength;
 
+	float mPassCooldownAfterCatch;
+	float mImmuneTimeAfterCatch;
 
+	int mLane;
+	int mSpawnIndex;
 };
 
