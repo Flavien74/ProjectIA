@@ -10,6 +10,9 @@
     <Filter Include="ProjetIA">
       <UniqueIdentifier>{8be7740b-d453-4d2e-8fb2-fa981c05d5ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ProjetIA\StateMachine">
+      <UniqueIdentifier>{0eeeed02-1806-4eef-9484-545e85d1c786}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp">
@@ -34,6 +37,21 @@
     <ClCompile Include="SampleScene.cpp">
       <Filter>Sample</Filter>
     </ClCompile>
+    <ClCompile Include="RugbyMan.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -57,6 +75,30 @@
     <ClInclude Include="SampleScene.h">
       <Filter>Sample</Filter>
     </ClInclude>
+    <ClInclude Include="RugbyMan.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Behaviour.h">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scene.inl">
@@ -67,6 +109,18 @@
     </None>
     <None Include="Entity.inl">
       <Filter>Engine</Filter>
+    </None>
+    <None Include="Condition.inl">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </None>
+    <None Include="Transition.inl">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </None>
+    <None Include="StateMachine.inl">
+      <Filter>ProjetIA\StateMachine</Filter>
+    </None>
+    <None Include="Behaviour.inl">
+      <Filter>ProjetIA\StateMachine</Filter>
     </None>
   </ItemGroup>
 </Project>

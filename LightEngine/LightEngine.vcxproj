@@ -19,28 +19,45 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="DummyEntity.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RugbyMan.cpp" />
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="Condition.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="DummyEntity.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="RugbyMan.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="Transition.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Behaviour.inl" />
+    <None Include="Condition.inl" />
     <None Include="Entity.inl" />
     <None Include="GameManager.inl" />
     <None Include="Scene.inl" />
+    <None Include="StateMachine.inl" />
+    <None Include="Transition.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
