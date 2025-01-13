@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\",
+  "WorkspaceRootPath": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|solutionrelative:LightEngine\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|solutionrelative:LightEngine\\SampleScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|solutionrelative:LightEngine\\SampleScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|solutionrelative:LightEngine\\DummyEntity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{C31A8FD3-0204-4F85-BB29-1240472D0DB2}|LightEngine\\LightEngine.vcxproj|solutionrelative:LightEngine\\DummyEntity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -30,69 +30,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SampleScene.cpp",
-              "DocumentMoniker": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.cpp",
+              "DocumentMoniker": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.cpp",
               "RelativeDocumentMoniker": "LightEngine\\SampleScene.cpp",
-              "ToolTip": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.cpp",
+              "ToolTip": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.cpp",
               "RelativeToolTip": "LightEngine\\SampleScene.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-12T17:58:25.442Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T17:58:25.442Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "SampleScene.h",
-              "DocumentMoniker": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.h",
+              "DocumentMoniker": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.h",
               "RelativeDocumentMoniker": "LightEngine\\SampleScene.h",
-              "ToolTip": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\SampleScene.h",
+              "ToolTip": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\SampleScene.h",
               "RelativeToolTip": "LightEngine\\SampleScene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-12T17:58:12.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T17:58:12.242Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "DummyEntity.h",
-              "DocumentMoniker": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.h",
+              "DocumentMoniker": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.h",
               "RelativeDocumentMoniker": "LightEngine\\DummyEntity.h",
-              "ToolTip": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.h",
+              "ToolTip": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.h",
               "RelativeToolTip": "LightEngine\\DummyEntity.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-12T17:58:07.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T17:58:07.818Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "DummyEntity.cpp",
-              "DocumentMoniker": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.cpp",
+              "DocumentMoniker": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.cpp",
               "RelativeDocumentMoniker": "LightEngine\\DummyEntity.cpp",
-              "ToolTip": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\DummyEntity.cpp",
+              "ToolTip": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\DummyEntity.cpp",
               "RelativeToolTip": "LightEngine\\DummyEntity.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-12T17:57:49.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-12T17:57:49.743Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\main.cpp",
               "RelativeDocumentMoniker": "LightEngine\\main.cpp",
-              "ToolTip": "D:\\Projects\\ProjetIA\\LightEngine-master\\LightEngine-master\\LightEngine\\main.cpp",
+              "ToolTip": "C:\\Users\\matee\\Documents\\GitHub\\ProjectIA\\LightEngine\\main.cpp",
               "RelativeToolTip": "LightEngine\\main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAABAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-12T17:53:04.47Z",
               "EditorCaption": ""
