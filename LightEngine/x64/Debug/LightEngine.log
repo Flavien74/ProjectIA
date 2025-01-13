@@ -42,7 +42,6 @@ C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Entity.cpp(169,32): warnin
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Entity.cpp(169,32): warning C4244:             T=int
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Entity.cpp(169,32): warning C4244:         ]
   GameManager.cpp
-  main.cpp
   SampleScene.cpp
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\SampleScene.cpp(42,27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\SampleScene.cpp(42,24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
@@ -50,5 +49,7 @@ C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\SampleScene.cpp(42,24): wa
   Utils.cpp
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Utils.cpp(27,19): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Utils.cpp(35,37): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
+  main.cpp
   Génération de code en cours...
-  LightEngine.vcxproj -> C:\Users\matee\Documents\GitHub\ProjectIA\x64\Debug\LightEngine.exe
+  LINK : C:\Users\matee\Documents\GitHub\ProjectIA\x64\Debug\LightEngine.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+LINK : fatal error LNK1104: impossible d'ouvrir le fichier 'sfml-graphics-d.lib'
