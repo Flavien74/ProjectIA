@@ -5,7 +5,7 @@
 #include <iostream>
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake")
+	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mDetectionRange(200), mName("Jake")
 {
 	mRigidBody = true;
 }

@@ -1,6 +1,8 @@
 #include "RugbyDebug.h"
 #include "RugbyMan.h"
 #include "Debug.h"
+#include "Field.h"
+#include "Utils.h"
 #include <iostream>
 
 RugbyDebug::RugbyDebug()
@@ -12,7 +14,7 @@ void RugbyDebug::OnDebugEvent(const sf::Event& event, RugbyMan* ballOwner)
 	if (event.key.code == sf::Keyboard::Space) {
 		mEntitySelected = nullptr;
 	}
-		
+
 	if (event.type != sf::Event::EventType::MouseButtonPressed)
 		return;
 
@@ -54,9 +56,50 @@ void RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
 
 void RugbyDebug::OnUpdate()
 {
+
+	RugbyMan* BallOwner = nullptr;
+
+	for (RugbyMan* rugbyMan : mAllRugbyMan)
+	{
+		if (rugbyMan->HaveBall())
+		{
+			BallOwner = rugbyMan;
+			break;
+		}
+	}
+	if (BallOwner == nullptr)
+		return;
+
+	Debug::DrawCircle(BallOwner->GetPosition().x, BallOwner->GetPosition().y, 15, sf::Color::Yellow);
+
 	if (mEntitySelected != nullptr)
 	{
 		sf::Vector2f position = mEntitySelected->GetPosition();
-		Debug::DrawCircle(position.x, position.y, 10, sf::Color::Blue);
+		Debug::DrawCircle(position.x, position.y, 12, sf::Color::Blue);
 	}
+
+	for (RugbyMan* rugbyMan : mAllRugbyMan)
+	{
+		if (!rugbyMan->IsTag(BallOwner->GetTag()) || rugbyMan == BallOwner)
+			continue;
+
+		int behindRelative = (BallOwner->IsTag(Field::TEAMBLUE)) ? -1 : 1;
+
+		if (Utils::GetDistance(BallOwner->GetPosition().x, BallOwner->GetPosition().y,
+			rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) > BallOwner->GetDetectionRange())
+			continue;
+
+		if (BallOwner->IsTag(Field::TEAMBLUE))
+		{
+			if (rugbyMan->GetPosition().x > BallOwner->GetPosition().x)
+				continue;
+		}
+		else
+		{
+			if (rugbyMan->GetPosition().x < BallOwner->GetPosition().x)
+				continue;
+		}
+		Debug::DrawCircle(rugbyMan->GetPosition().x, rugbyMan->GetPosition().y, 10, sf::Color::White);
+	}
+
 }

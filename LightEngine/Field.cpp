@@ -44,19 +44,19 @@ void Field::OnInitialize()
 	{
 		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), mSpawns[i], false);
 	}
-	for (int i = 5; i < 9; i++)
+	for (int i = 5; i < 10; i++)
 	{
 		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), mSpawns[i], false);
 	}
-	mAllRugbyMan[9]->OnStart((Tag::TEAMRED), mSpawns[9], true);
-
 	mTouchdownLines[0] = width * 0.1;
 	mTouchdownLines[1] = width * 0.9;
 
 	rugbyDebug = new RugbyDebug();
 
 	rugbyDebug->SetListOfRugbyMan(mAllRugbyMan);
-	mBallOwner = mAllRugbyMan[9];
+
+	srand(time(NULL));
+	mAllRugbyMan[rand() % 10]->ReceiveBall();
 }
 
 void Field::OnEvent(const sf::Event& event)
