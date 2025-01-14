@@ -1,7 +1,7 @@
 #include "Entity.h"
 #pragma once
 
-class RugbyMan : Entity
+class RugbyMan : public Entity
 {
 private:
 	float mStrength;
