@@ -15,7 +15,7 @@ struct AABB
 class Field : Scene
 {
 public:
-	void PassBall(RugbyMan from, RugbyMan to);
+	void PassBall(RugbyMan* from, RugbyMan* to);
 
 public:
 	enum Tag
@@ -29,6 +29,7 @@ public:
 	float mTouchdownLines[2];
 
 	RugbyMan* mBallOwner;
+	Ball* mBall;
 
 	std::vector<std::vector< int>> mSpawns = {};
 

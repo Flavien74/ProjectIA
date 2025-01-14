@@ -99,6 +99,9 @@
     <ClInclude Include="Action.h">
       <Filter>ProjetIA\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scene.inl">

@@ -43,6 +43,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Resources.h" />
     <ClInclude Include="RugbyMan.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
