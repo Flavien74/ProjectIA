@@ -24,7 +24,7 @@ public:
 	std::string GetName() const { return mName; }
 
 	RugbyMan();
-	RugbyMan(int tag, int lane,int spawnIndex);
+	void OnStart(int tag, int spawnIndex);
 
 protected:
 	void OnUpdate() override;

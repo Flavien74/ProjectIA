@@ -2,19 +2,20 @@
 #include "Field.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake"), mLane(1), mSpawnIndex(0), mHaveBall(false)
+	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake"), mHaveBall(false)
 {
 }
 
-RugbyMan::RugbyMan(int tag, int lane, int spawnIndex) :
-	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake"), mLane(lane),mSpawnIndex(spawnIndex),mHaveBall(false)
+void RugbyMan::OnStart(int tag, int spawnIndex)
 {
+	//mLane = lane;
+	mSpawnIndex = spawnIndex;
 	SetTag(tag);
 	if (IsTag(Field::Tag::TEAMBLUE)) {
-		SetDirection(0, 1);
+		SetDirection(1, 0, 50);
 	}
 	else {
-		SetDirection(0, -1);
+		SetDirection(-1, 0, 50);
 	}
 }
 

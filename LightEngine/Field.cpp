@@ -51,21 +51,18 @@ void Field::OnInitialize()
 	mAllRugbyMan.push_back(CreateEntity<RugbyMan>(30, sf::Color::Red));
 	mAllRugbyMan.push_back(CreateEntity<RugbyMan>(30, sf::Color::Red));
 
-	/*
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMBLUE), 1, 0));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMBLUE), 1, 1));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMBLUE), 2, 2));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMBLUE), 3, 3));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMBLUE), 3, 5));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMRED), 1, 5));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMRED), 1, 6));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMRED), 2, 7));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMRED), 3, 8));
-	mAllRugbyMan.push_back(new RugbyMan((Tag::TEAMRED), 3, 9));*/
-
 	for (int i = 0; i < 10; i++)
 	{
 		mAllRugbyMan[i]->SetPosition(mSpawns[i].x,mSpawns[i].y);
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), i);
+	}
+	for (int i = 5; i < 10; i++)
+	{
+		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), i);
+
 	}
 }
 
