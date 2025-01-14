@@ -26,17 +26,18 @@ void RugbyDebug::OnDebugEvent(const sf::Event& event, RugbyMan* ballOwner)
 		}
 		else {
 			for (auto rugbyman : mAllRugbyMan) {
-				TrySetSelectedEntity(rugbyman, event.mouseButton.x, event.mouseButton.y);
+				mEntitySelected = TrySetSelectedEntity(rugbyman, event.mouseButton.x, event.mouseButton.y);
+				if (mEntitySelected != nullptr) break;
 			}
 		}
 	}
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
 	{
-		if (mEntitySelected != nullptr)
-		{
-			ballOwner->PassBall(mEntitySelected);
+		for (auto rugbyman : mAllRugbyMan) {
+			ballOwner->PassBall(TrySetSelectedEntity(rugbyman, event.mouseButton.x, event.mouseButton.y));
 		}
+
 	}
 }
 
@@ -45,13 +46,13 @@ void RugbyDebug::SetListOfRugbyMan(std::vector<RugbyMan*>& list)
 	mAllRugbyMan = list;
 }
 
-void RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
+RugbyMan* RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
 {
 	if (pEntity->IsInside(x, y) == false) {
-		return;
+		return nullptr;
 	}
 
-	mEntitySelected = pEntity;
+	return pEntity;
 }
 
 void RugbyDebug::OnUpdate()

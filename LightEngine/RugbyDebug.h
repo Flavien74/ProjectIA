@@ -17,5 +17,5 @@ private:
 	std::vector<RugbyMan*> mAllRugbyMan;
 	RugbyMan* mEntitySelected;
 
-	void TrySetSelectedEntity(RugbyMan* pEntity, int x, int y);
+	RugbyMan* TrySetSelectedEntity(RugbyMan* pEntity, int x, int y);
 };

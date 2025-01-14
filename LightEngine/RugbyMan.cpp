@@ -12,7 +12,7 @@ RugbyMan::RugbyMan() :
 
 void RugbyMan::PassBall(RugbyMan* to)
 {
-	if (dynamic_cast<Field*>(GetScene())->mBall != nullptr || to == this) return;
+	if (dynamic_cast<Field*>(GetScene())->mBall != nullptr || to == this || to == nullptr) return;
 	dynamic_cast<Field*>(GetScene())->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
 	sf::Vector2f direction = (to->GetPosition() - GetPosition());
 	//normalize direction
