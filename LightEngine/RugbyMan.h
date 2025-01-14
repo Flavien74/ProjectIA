@@ -14,5 +14,12 @@ private:
 	int mSpawnIndex;
 
 	bool mHaveBall;
+
+public:
+	float GetStrength() const { return mStrength; }
+	float GetSprintStrength() const { return mSprintStrength; }
+	float GetSpeed() const { return mSpeed; }
+
+
 };
 
