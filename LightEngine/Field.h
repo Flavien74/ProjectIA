@@ -34,7 +34,9 @@ public:
 	RugbyMan* mBallOwner;
 	class Ball* mBall;
 
-	std::vector<std::pair<Tag, int>> mScores = { {TEAMBLUE,0} ,{TEAMRED,0} };
+	int ScoreBlue = 0;
+	int ScoreRed = 0;
+
 	std::vector<RugbyMan*> mAllRugbyMan;
 
 	std::vector<sf::Vector2i> mSpawns;
@@ -44,4 +46,7 @@ public:
 	void OnEvent(const sf::Event& event) override;
 	void OnUpdate() override;
 	void ChangeBallOwner(RugbyMan*);
+	void IsPlayerScoring(RugbyMan*);
+	void Score(Tag);
+	void Reset();
 };

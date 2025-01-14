@@ -15,7 +15,7 @@ private:
 	std::string mName;
 
 	int mLane;
-	int mSpawnIndex;
+	sf::Vector2i DefautPos;
 
 	bool mHaveBall;
 
@@ -23,11 +23,12 @@ public:
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
+	sf::Vector2i GetDefaultPos() const { return DefautPos; }
 	std::string GetName() const { return mName; }
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);
-	void OnStart(int tag, int spawnIndex, bool);
+	void OnStart(int tag, sf::Vector2i spawn, bool);
 
 	void ReceiveBall();
 	void LooseBall() { mHaveBall = false; }

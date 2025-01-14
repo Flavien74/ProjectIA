@@ -31,11 +31,11 @@ void RugbyMan::PassBall(RugbyMan* to)
 }
 
 
-void RugbyMan::OnStart(int tag, int spawnIndex, bool isBallMine)
+void RugbyMan::OnStart(int tag, sf::Vector2i spawn, bool isBallMine)
 {
 	//mLane = lane;
 	mHaveBall = isBallMine;
-	mSpawnIndex = spawnIndex;
+	DefautPos = spawn;
 	SetTag(tag);
 	if (IsTag(Field::Tag::TEAMBLUE)) {
 		SetDirection(.5f, 0, 50);
