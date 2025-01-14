@@ -44,6 +44,9 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="RugbyDebug.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
@@ -97,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="RugbyDebug.h">
+      <Filter>ProjetIA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

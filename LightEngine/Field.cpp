@@ -4,6 +4,7 @@
 #include "Field.h"
 #include "RugbyMan.h"
 #include <iostream>
+#include "RugbyDebug.h"
 
 void Field::PassBall(RugbyMan* from, RugbyMan* to)
 {
@@ -64,14 +65,20 @@ void Field::OnInitialize()
 		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), i, false);
 	}
 	mAllRugbyMan[9]->OnStart((Tag::TEAMRED), 9, true);
+
+	rugbyDebug = new RugbyDebug();
+
+	rugbyDebug->SetListOfRugbyMan(mAllRugbyMan);
 }
 
 void Field::OnEvent(const sf::Event& event)
 {
+	rugbyDebug->OnDebugEvent(event);
 }
 
 void Field::OnUpdate()
 {
+	rugbyDebug->OnUpdate();
 }
 
 void Field::ChangeBallOwner(RugbyMan* newBallOwner)

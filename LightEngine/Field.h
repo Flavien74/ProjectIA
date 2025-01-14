@@ -4,6 +4,7 @@
 #pragma once
 
 class RugbyMan;
+class RugbyDebug;
 
 struct AABB
 {
@@ -25,6 +26,7 @@ public:
 		TEAMRED,
 		BALL
 	};
+	RugbyDebug* rugbyDebug;
 
 	AABB mLanes[3];
 	float mTouchdownLines[2];

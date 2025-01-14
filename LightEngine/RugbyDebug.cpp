@@ -1,29 +1,62 @@
 #include "RugbyDebug.h"
+#include "RugbyMan.h"
+#include "Debug.h"
+#include <iostream>
+
+RugbyDebug::RugbyDebug()
+{
+}
 
 void RugbyDebug::OnDebugEvent(const sf::Event& event)
 {
+	if (event.key.code == sf::Keyboard::Space) {
+		mEntitySelected = nullptr;
+	}
+		
 	if (event.type != sf::Event::EventType::MouseButtonPressed)
 		return;
 
-	/*if (event.mouseButton.button == sf::Mouse::Button::Right)
+	if (event.mouseButton.button == sf::Mouse::Button::Right)
 	{
-		TrySetSelectedEntity(pEntity1, event.mouseButton.x, event.mouseButton.y);
-		TrySetSelectedEntity(pEntity2, event.mouseButton.x, event.mouseButton.y);
+		if (mEntitySelected != nullptr)
+		{
+			mEntitySelected->GoToPosition(event.mouseButton.x, event.mouseButton.y, 100.f);
+		}
+		else {
+			for (auto rugbyman : mAllRugbyMan) {
+				TrySetSelectedEntity(rugbyman, event.mouseButton.x, event.mouseButton.y);
+			}
+		}
 	}
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
 	{
-		if (pEntitySelected != nullptr)
+		if (mEntitySelected != nullptr)
 		{
-			pEntitySelected->GoToPosition(event.mouseButton.x, event.mouseButton.y, 100.f);
+			//LA PASSE
 		}
 	}
 }
 
-void RugbyDebug::TrySetSelectedEntity(Entity* pEntity, int x, int y)
+void RugbyDebug::SetListOfRugbyMan(std::vector<RugbyMan*>& list)
 {
-	if (pEntity->IsInside(x, y) == false)
-		return;
+	mAllRugbyMan = list;
+}
 
-	pEntitySelected = pEntity;
-}*/
+void RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
+{
+	if (pEntity->IsInside(x, y) == false) {
+		return;
+	}
+
+	mEntitySelected = pEntity;
+}
+
+void RugbyDebug::OnUpdate()
+{
+	if (mEntitySelected != nullptr)
+	{
+		sf::Vector2f position = mEntitySelected->GetPosition();
+		Debug::DrawCircle(position.x, position.y, 10, sf::Color::Blue);
+	}
+}
