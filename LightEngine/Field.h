@@ -15,6 +15,9 @@ struct AABB
 class Field : Scene
 {
 public:
+	void PassBall(RugbyMan from, RugbyMan to);
+
+public:
 	enum Tag
 	{
 		TEAMBLUE,
@@ -27,7 +30,7 @@ public:
 
 	RugbyMan* mBallOwner;
 
-	std::vector<int, int> mSpawns;
+	std::vector<std::vector< int>> mSpawns = {};
 
-	std::vector<Tag, int> mScores;
+	std::vector<std::pair<Tag, int>> mScores = { {TEAMBLUE,0} ,{TEAMRED,0} };
 };
