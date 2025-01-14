@@ -47,6 +47,6 @@ public:
 	void OnUpdate() override;
 	void ChangeBallOwner(RugbyMan*);
 	void IsPlayerScoring(RugbyMan*);
-	void Score(Tag);
 	void Reset();
+	void GiveTheBallRandom(int,int);
 };

@@ -56,6 +56,11 @@ void RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
 
 void RugbyDebug::OnUpdate()
 {
+	if (mEntitySelected != nullptr)
+	{
+		sf::Vector2f position = mEntitySelected->GetPosition();
+		Debug::DrawCircle(position.x, position.y, 12, sf::Color::Blue);
+	}
 
 	RugbyMan* BallOwner = nullptr;
 
@@ -72,11 +77,7 @@ void RugbyDebug::OnUpdate()
 
 	Debug::DrawCircle(BallOwner->GetPosition().x, BallOwner->GetPosition().y, 15, sf::Color::Yellow);
 
-	if (mEntitySelected != nullptr)
-	{
-		sf::Vector2f position = mEntitySelected->GetPosition();
-		Debug::DrawCircle(position.x, position.y, 12, sf::Color::Blue);
-	}
+
 
 	for (RugbyMan* rugbyMan : mAllRugbyMan)
 	{
@@ -101,5 +102,4 @@ void RugbyDebug::OnUpdate()
 		}
 		Debug::DrawCircle(rugbyMan->GetPosition().x, rugbyMan->GetPosition().y, 10, sf::Color::White);
 	}
-
 }

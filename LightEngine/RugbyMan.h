@@ -33,7 +33,7 @@ public:
 	void OnStart(int tag, sf::Vector2i spawn, bool);
 
 	void ReceiveBall();
-	void LooseBall() { mHaveBall = false; }
+	void LooseBall();
 
 protected:
 	void OnUpdate() override;

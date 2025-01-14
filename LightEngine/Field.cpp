@@ -55,8 +55,7 @@ void Field::OnInitialize()
 
 	rugbyDebug->SetListOfRugbyMan(mAllRugbyMan);
 
-	srand(time(NULL));
-	mAllRugbyMan[rand() % 10]->ReceiveBall();
+	GiveTheBallRandom(0,10);
 }
 
 void Field::OnEvent(const sf::Event& event)
@@ -101,10 +100,11 @@ void Field::ChangeBallOwner(RugbyMan* newBallOwner)
 void Field::IsPlayerScoring(RugbyMan* ballOwner)
 {
 	if (ballOwner->IsTag(Tag::TEAMBLUE)) {
-		if (ballOwner->GetPosition().x < mTouchdownLines[1])
+		if (ballOwner->GetPosition().x > mTouchdownLines[1])
 		{
 			ScoreBlue++;
 			Reset();
+			GiveTheBallRandom(5,4);
 		}
 
 	}
@@ -113,6 +113,7 @@ void Field::IsPlayerScoring(RugbyMan* ballOwner)
 		{
 			ScoreRed++;
 			Reset();
+			GiveTheBallRandom(0,5);
 		}
 	}
 }
@@ -122,5 +123,12 @@ void Field::Reset()
 	for (RugbyMan* rugbyman : mAllRugbyMan)
 	{
 		rugbyman->SetPosition(rugbyman->GetDefaultPos().x, rugbyman->GetDefaultPos().y);
+		rugbyman->LooseBall();
 	}
+}
+
+void Field::GiveTheBallRandom(int min,int max)
+{
+	srand(time(NULL));
+	mAllRugbyMan[min + rand() % max]->ReceiveBall();
 }

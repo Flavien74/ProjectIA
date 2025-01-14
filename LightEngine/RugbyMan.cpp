@@ -75,3 +75,9 @@ void RugbyMan::ReceiveBall()
 	mHaveBall = true;
 	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(this);
 }
+
+void RugbyMan::LooseBall()
+{
+	mHaveBall = false;
+	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(nullptr);
+}
