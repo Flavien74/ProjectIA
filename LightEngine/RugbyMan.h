@@ -24,7 +24,7 @@ public:
 	std::string GetName() const { return mName; }
 
 	RugbyMan();
-	void OnStart(int tag, int spawnIndex);
+	void OnStart(int tag, int spawnIndex, bool);
 
 	void ReceiveBall();
 

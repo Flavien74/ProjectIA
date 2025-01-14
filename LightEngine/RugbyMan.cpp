@@ -1,14 +1,17 @@
 #include "RugbyMan.h"
 #include "Field.h"
+#include <iostream>
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake"), mHaveBall(false)
+	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mName("Jake")
 {
+	mRigidBody = true;
 }
 
-void RugbyMan::OnStart(int tag, int spawnIndex)
+void RugbyMan::OnStart(int tag, int spawnIndex, bool isBallMine)
 {
 	//mLane = lane;
+	mHaveBall = isBallMine;
 	mSpawnIndex = spawnIndex;
 	SetTag(tag);
 	if (IsTag(Field::Tag::TEAMBLUE)) {
@@ -39,9 +42,11 @@ void RugbyMan::GiveTheBall(RugbyMan* pCollidedWith)
 {
 	mHaveBall = false;
 	pCollidedWith->ReceiveBall();
+	std::cout << "I gave the ball" << std::endl;
 }
 
 void RugbyMan::ReceiveBall()
 {
+	std::cout << "I have the ball" << std::endl;
 	mHaveBall = true;
 }

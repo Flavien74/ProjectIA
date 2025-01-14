@@ -57,13 +57,13 @@ void Field::OnInitialize()
 	}
 	for (int i = 0; i < 5; i++)
 	{
-		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), i);
+		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), i,false);
 	}
-	for (int i = 5; i < 10; i++)
+	for (int i = 5; i < 9; i++)
 	{
-		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), i);
-
+		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), i, false);
 	}
+	mAllRugbyMan[9]->OnStart((Tag::TEAMRED), 9, true);
 }
 
 void Field::OnEvent(const sf::Event& event)
