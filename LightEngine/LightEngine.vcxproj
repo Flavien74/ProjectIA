@@ -27,6 +27,8 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RugbyMan.cpp" />
+    <ClCompile Include="RugbyManAction.cpp" />
+    <ClCompile Include="RugbyManCondition.cpp" />
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -45,6 +47,8 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="RugbyMan.h" />
+    <ClInclude Include="RugbyManAction.h" />
+    <ClInclude Include="RugbyManCondition.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StateMachine.h" />

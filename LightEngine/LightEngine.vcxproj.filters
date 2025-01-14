@@ -52,6 +52,12 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>ProjetIA\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="RugbyManAction.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
+    <ClCompile Include="RugbyManCondition.cpp">
+      <Filter>ProjetIA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -100,6 +106,10 @@
       <Filter>ProjetIA\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="Resources.h">
+    <ClInclude Include="RugbyManCondition.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
+    <ClInclude Include="RugbyManAction.h">
       <Filter>ProjetIA</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,8 @@ private:
 	float mPassCooldownAfterCatch;
 	float mImmuneTimeAfterCatch;
 
+	std::string mName;
+
 	int mLane;
 	int mSpawnIndex;
 
@@ -19,7 +21,14 @@ public:
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
+	std::string GetName() const { return mName; }
 
+	RugbyMan();
+	RugbyMan(int tag, int lane,int spawnIndex);
 
+protected:
+	void OnUpdate() override;
+	void OnCollision(Entity* pCollidedWith) override;
+	void GiveTheBall(RugbyMan* pCollidedWith);
+	void ReceiveBall();
 };
-

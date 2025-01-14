@@ -1,8 +1,10 @@
 #include "Scene.h"
 #include <vector>
+
 #include <stdio.h>
-#include "RugbyMan.h"
 #pragma once
+
+class RugbyMan;
 
 struct AABB
 {
@@ -12,7 +14,7 @@ struct AABB
 	int yMax;
 };
 
-class Field : Scene
+class Field : public Scene
 {
 public:
 	void PassBall(RugbyMan* from, RugbyMan* to);
@@ -31,7 +33,14 @@ public:
 	RugbyMan* mBallOwner;
 	Ball* mBall;
 
-	std::vector<std::vector< int>> mSpawns = {};
-
 	std::vector<std::pair<Tag, int>> mScores = { {TEAMBLUE,0} ,{TEAMRED,0} };
+	std::vector<RugbyMan*> mAllRugbyMan;
+
+	std::vector<sf::Vector2i> mSpawns;
+
+
+	void OnInitialize() override;
+	void OnEvent(const sf::Event& event) override;
+	void OnUpdate() override;
+	void ChangeBallOwner(RugbyMan*);
 };
