@@ -33,7 +33,7 @@ void Ball::OnUpdate()
 
 void Ball::OnCollision(Entity* collidedWith)
 {
-	Destroy();
+	if (collidedWith != mFrom)Destroy();
 }
 
 void Ball::OnDestroy()

@@ -12,20 +12,21 @@ RugbyMan::RugbyMan() :
 
 void RugbyMan::PassBall(RugbyMan* to)
 {
-	Ball* mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
+	if (dynamic_cast<Field*>(GetScene())->mBall != nullptr || to == this) return;
+	dynamic_cast<Field*>(GetScene())->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
 	sf::Vector2f direction = (to->GetPosition() - GetPosition());
 	//normalize direction
 	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
 
-	mBall->SetPosition(
+	dynamic_cast<Field*>(GetScene())->mBall->SetPosition(
 		GetPosition().x + direction.x * (Resources::PlayerSize + 5),
 		GetPosition().y + direction.y * (Resources::PlayerSize + 5));
 
-	mBall->InitBall(this, to);
-	mBall->SetSpeed(Resources::BallSpeed * GetStrength());
-	mBall->SetDir(to->GetPosition());
-	mBall->SetTag(Field::BALL);
+	dynamic_cast<Field*>(GetScene())->mBall->InitBall(this, to);
+	dynamic_cast<Field*>(GetScene())->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
+	dynamic_cast<Field*>(GetScene())->mBall->SetDir(to->GetPosition());
+	dynamic_cast<Field*>(GetScene())->mBall->SetTag(Field::BALL);
 	LooseBall();
 }
 
