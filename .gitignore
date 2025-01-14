@@ -1043,3 +1043,4 @@ dkms.conf
 *.uf2
 # Raspberry Pi Pico disassembler file
 *.dis
+.vs/LightEngine/v17/Browse.VC.db
