@@ -1,6 +1,13 @@
-﻿  RugbyDebug.cpp
-C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(50,27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(50,24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-  RugbyManCondition.cpp
-  Génération de code en cours...
+﻿  Field.cpp
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(56,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   LightEngine.vcxproj -> C:\Users\matee\Documents\GitHub\ProjectIA\x64\Debug\LightEngine.exe
