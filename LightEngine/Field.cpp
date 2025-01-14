@@ -6,25 +6,6 @@
 #include <iostream>
 #include "RugbyDebug.h"
 
-void Field::PassBall(RugbyMan* from, RugbyMan* to)
-{
-	mBall = CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
-	sf::Vector2f direction = (to->GetPosition() - from->GetPosition());
-	//normalize direction
-	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
-
-
-	mBall->SetPosition(
-		from->GetPosition().x + direction.x * (Resources::PlayerSize + 5),
-		from->GetPosition().y + direction.y * (Resources::PlayerSize + 5));
-
-	mBall->InitBall(from, to);
-	mBall->SetSpeed(Resources::BallSpeed * from->GetStrength());
-	mBall->SetDir(to->GetPosition());
-	mBall->SetTag(BALL);
-	from->LooseBall();
-}
-
 void Field::OnInitialize()
 {
 	int width = GetWindowWidth();
@@ -77,11 +58,7 @@ void Field::OnInitialize()
 
 void Field::OnEvent(const sf::Event& event)
 {
-	rugbyDebug->OnDebugEvent(event);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		if (mBall == nullptr) PassBall(mBallOwner, mAllRugbyMan[1]);
-	}
+	rugbyDebug->OnDebugEvent(event, mBallOwner);
 }
 
 void Field::OnUpdate()

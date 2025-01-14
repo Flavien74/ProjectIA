@@ -10,6 +10,8 @@ private:
 	float mPassCooldownAfterCatch;
 	float mImmuneTimeAfterCatch;
 
+	float mDetectionRange;
+
 	std::string mName;
 
 	int mLane;
@@ -24,6 +26,7 @@ public:
 	std::string GetName() const { return mName; }
 
 	RugbyMan();
+	void PassBall(RugbyMan* to);
 	void OnStart(int tag, int spawnIndex, bool);
 
 	void ReceiveBall();

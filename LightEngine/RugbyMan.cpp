@@ -1,5 +1,7 @@
 #include "RugbyMan.h"
 #include "Field.h"
+#include "Ball.h"
+#include "Resources.h"
 #include <iostream>
 
 RugbyMan::RugbyMan() :
@@ -7,6 +9,26 @@ RugbyMan::RugbyMan() :
 {
 	mRigidBody = true;
 }
+
+void RugbyMan::PassBall(RugbyMan* to)
+{
+	Ball* mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
+	sf::Vector2f direction = (to->GetPosition() - GetPosition());
+	//normalize direction
+	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
+
+
+	mBall->SetPosition(
+		GetPosition().x + direction.x * (Resources::PlayerSize + 5),
+		GetPosition().y + direction.y * (Resources::PlayerSize + 5));
+
+	mBall->InitBall(this, to);
+	mBall->SetSpeed(Resources::BallSpeed * GetStrength());
+	mBall->SetDir(to->GetPosition());
+	mBall->SetTag(Field::BALL);
+	LooseBall();
+}
+
 
 void RugbyMan::OnStart(int tag, int spawnIndex, bool isBallMine)
 {

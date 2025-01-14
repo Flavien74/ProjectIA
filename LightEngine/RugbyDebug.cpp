@@ -7,7 +7,7 @@ RugbyDebug::RugbyDebug()
 {
 }
 
-void RugbyDebug::OnDebugEvent(const sf::Event& event)
+void RugbyDebug::OnDebugEvent(const sf::Event& event, RugbyMan* ballOwner)
 {
 	if (event.key.code == sf::Keyboard::Space) {
 		mEntitySelected = nullptr;
@@ -33,7 +33,7 @@ void RugbyDebug::OnDebugEvent(const sf::Event& event)
 	{
 		if (mEntitySelected != nullptr)
 		{
-			//LA PASSE
+			ballOwner->PassBall(mEntitySelected);
 		}
 	}
 }

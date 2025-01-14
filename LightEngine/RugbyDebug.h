@@ -9,7 +9,7 @@ class RugbyDebug
 public:
 	RugbyDebug();
 
-	void OnDebugEvent(const sf::Event& event);
+	void OnDebugEvent(const sf::Event& event, RugbyMan* ballOwner);
 	void OnUpdate();
 	void SetListOfRugbyMan(std::vector<RugbyMan*>&);
 
