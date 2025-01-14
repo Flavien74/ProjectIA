@@ -23,6 +23,8 @@ public:
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
+	float GetDetectionRange() const { return mDetectionRange; }
+	bool HaveBall() { return mHaveBall; }
 	std::string GetName() const { return mName; }
 
 	RugbyMan();

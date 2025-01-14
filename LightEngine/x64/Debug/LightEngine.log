@@ -1,2 +1,6 @@
-﻿  RugbyMan.cpp
+﻿  RugbyDebug.cpp
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(50,27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(50,24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  RugbyManCondition.cpp
+  Génération de code en cours...
   LightEngine.vcxproj -> C:\Users\matee\Documents\GitHub\ProjectIA\x64\Debug\LightEngine.exe
