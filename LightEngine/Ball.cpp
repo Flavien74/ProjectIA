@@ -1,10 +1,12 @@
 #include "Ball.h"
+#include "RugbyMan.h"
 #include "Resources.h"
 
 void Ball::InitBall(RugbyMan* from, RugbyMan* to)
 {
 	mFrom = from;
 	mTo = to;
+
 }
 
 void Ball::OnUpdate()
