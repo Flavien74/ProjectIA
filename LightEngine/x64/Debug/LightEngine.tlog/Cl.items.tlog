@@ -6,6 +6,8 @@ C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp;C:\Users\matee\D
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\GameManager.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\GameManager.obj
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\main.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\main.obj
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyMan.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\RugbyMan.obj
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyManAction.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\RugbyManAction.obj
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyManCondition.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\RugbyManCondition.obj
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\SampleScene.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\SampleScene.obj
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Scene.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\Scene.obj
 C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\StateMachine.cpp;C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\x64\Debug\StateMachine.obj

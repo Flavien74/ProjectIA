@@ -1,6 +1,5 @@
 #include "Scene.h"
 #include <vector>
-
 #include <stdio.h>
 #pragma once
 
@@ -31,7 +30,7 @@ public:
 	float mTouchdownLines[2];
 
 	RugbyMan* mBallOwner;
-	Ball* mBall;
+	class Ball* mBall;
 
 	std::vector<std::pair<Tag, int>> mScores = { {TEAMBLUE,0} ,{TEAMRED,0} };
 	std::vector<RugbyMan*> mAllRugbyMan;
