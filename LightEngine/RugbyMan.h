@@ -26,9 +26,10 @@ public:
 	RugbyMan();
 	RugbyMan(int tag, int lane,int spawnIndex);
 
+	void ReceiveBall();
+
 protected:
 	void OnUpdate() override;
 	void OnCollision(Entity* pCollidedWith) override;
 	void GiveTheBall(RugbyMan* pCollidedWith);
-	void ReceiveBall();
 };
