@@ -27,6 +27,7 @@ public:
 	void OnStart(int tag, int spawnIndex, bool);
 
 	void ReceiveBall();
+	void LooseBall() { mHaveBall = false; }
 
 protected:
 	void OnUpdate() override;

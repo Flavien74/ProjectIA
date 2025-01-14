@@ -9,17 +9,20 @@
 void Field::PassBall(RugbyMan* from, RugbyMan* to)
 {
 	mBall = CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
-	sf::Vector2f direction = (to->GetShape()->getPosition() - from->GetShape()->getPosition());
+	sf::Vector2f direction = (to->GetPosition() - from->GetPosition());
 	//normalize direction
 	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
+
 	mBall->SetPosition(
-		from->GetPosition().x + direction.x * (Resources::PlayerSize + Resources::BallSize),
-		from->GetPosition().y + direction.y * (Resources::PlayerSize + Resources::BallSize));
+		from->GetPosition().x + direction.x * (Resources::PlayerSize + 5),
+		from->GetPosition().y + direction.y * (Resources::PlayerSize + 5));
 
 	mBall->InitBall(from, to);
 	mBall->SetSpeed(Resources::BallSpeed * from->GetStrength());
-	mBall->GoToPosition(to->GetPosition().x, to->GetPosition().y);
+	mBall->SetDir(to->GetPosition());
+	mBall->SetTag(BALL);
+	from->LooseBall();
 }
 
 void Field::OnInitialize()
@@ -29,7 +32,7 @@ void Field::OnInitialize()
 
 	std::cout << width << std::endl;
 	std::cout << height << std::endl;
-	
+
 	mSpawns.push_back({ 50, 50 });
 	mSpawns.push_back({ 200, 100 });
 	mSpawns.push_back({ 320, 360 });
@@ -54,11 +57,11 @@ void Field::OnInitialize()
 
 	for (int i = 0; i < 10; i++)
 	{
-		mAllRugbyMan[i]->SetPosition(mSpawns[i].x,mSpawns[i].y);
+		mAllRugbyMan[i]->SetPosition(mSpawns[i].x, mSpawns[i].y);
 	}
 	for (int i = 0; i < 5; i++)
 	{
-		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), i,false);
+		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), i, false);
 	}
 	for (int i = 5; i < 9; i++)
 	{
@@ -69,11 +72,16 @@ void Field::OnInitialize()
 	rugbyDebug = new RugbyDebug();
 
 	rugbyDebug->SetListOfRugbyMan(mAllRugbyMan);
+	mBallOwner = mAllRugbyMan[9];
 }
 
 void Field::OnEvent(const sf::Event& event)
 {
 	rugbyDebug->OnDebugEvent(event);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		if (mBall == nullptr) PassBall(mBallOwner, mAllRugbyMan[1]);
+	}
 }
 
 void Field::OnUpdate()

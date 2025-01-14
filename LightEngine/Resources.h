@@ -5,7 +5,7 @@
 namespace Resources
 {
 	static constexpr auto BallSize = 20.f;
-	static constexpr auto BallSpeed = 10.f;
+	static constexpr auto BallSpeed = 50.f;
 
 	static constexpr auto PlayerSize = 50.f;
 }
