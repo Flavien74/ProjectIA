@@ -12,5 +12,7 @@ private:
 
 	int mLane;
 	int mSpawnIndex;
+
+	bool mHaveBall;
 };
 
