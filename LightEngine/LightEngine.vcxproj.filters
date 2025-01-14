@@ -1,44 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{a8d0131e-eb50-44ac-848b-7a821ba71b21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sample">
-      <UniqueIdentifier>{656b759f-efb2-4f59-b546-0dd585a90074}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ProjetIA">
-      <UniqueIdentifier>{8be7740b-d453-4d2e-8fb2-fa981c05d5ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ProjetIA\StateMachine">
-      <UniqueIdentifier>{0eeeed02-1806-4eef-9484-545e85d1c786}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Debug.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Moteur</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Moteur</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Moteur</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Moteur</Filter>
     </ClCompile>
-    <ClCompile Include="DummyEntity.cpp">
-      <Filter>Sample</Filter>
-    </ClCompile>
-    <ClCompile Include="SampleScene.cpp">
-      <Filter>Sample</Filter>
-    </ClCompile>
-    <ClCompile Include="RugbyMan.cpp">
-      <Filter>ProjetIA</Filter>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Moteur</Filter>
     </ClCompile>
     <ClCompile Include="Ball.cpp">
       <Filter>ProjetIA</Filter>
@@ -46,11 +23,8 @@
     <ClCompile Include="Field.cpp">
       <Filter>ProjetIA</Filter>
     </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClCompile>
-    <ClCompile Include="StateMachine.cpp">
-      <Filter>ProjetIA\StateMachine</Filter>
+    <ClCompile Include="RugbyMan.cpp">
+      <Filter>ProjetIA</Filter>
     </ClCompile>
     <ClCompile Include="RugbyManAction.cpp">
       <Filter>ProjetIA</Filter>
@@ -58,31 +32,44 @@
     <ClCompile Include="RugbyManCondition.cpp">
       <Filter>ProjetIA</Filter>
     </ClCompile>
+    <ClCompile Include="SampleScene.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="DummyEntity.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entity.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Behaviour.h">
+      <Filter>Moteur</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Condition.h">
+      <Filter>Moteur</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
-      <Filter>Engine</Filter>
+      <Filter>Moteur</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Moteur</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Moteur</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>Moteur</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Engine</Filter>
+      <Filter>Moteur</Filter>
     </ClInclude>
-    <ClInclude Include="DummyEntity.h">
-      <Filter>Sample</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleScene.h">
-      <Filter>Sample</Filter>
-    </ClInclude>
-    <ClInclude Include="RugbyMan.h">
-      <Filter>ProjetIA</Filter>
+    <ClInclude Include="Utils.h">
+      <Filter>Moteur</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>ProjetIA</Filter>
@@ -90,50 +77,63 @@
     <ClInclude Include="Field.h">
       <Filter>ProjetIA</Filter>
     </ClInclude>
-    <ClInclude Include="Condition.h">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="Transition.h">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="StateMachine.h">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="Behaviour.h">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="Action.h">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="Resources.h">
-    <ClInclude Include="RugbyManCondition.h">
+    <ClInclude Include="RugbyMan.h">
       <Filter>ProjetIA</Filter>
     </ClInclude>
     <ClInclude Include="RugbyManAction.h">
       <Filter>ProjetIA</Filter>
     </ClInclude>
+    <ClInclude Include="RugbyManCondition.h">
+      <Filter>ProjetIA</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleScene.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyEntity.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scene.inl">
-      <Filter>Engine</Filter>
-    </None>
-    <None Include="GameManager.inl">
-      <Filter>Engine</Filter>
-    </None>
-    <None Include="Entity.inl">
-      <Filter>Engine</Filter>
+    <None Include="Behaviour.inl">
+      <Filter>Moteur</Filter>
     </None>
     <None Include="Condition.inl">
-      <Filter>ProjetIA\StateMachine</Filter>
+      <Filter>Moteur</Filter>
+    </None>
+    <None Include="Entity.inl">
+      <Filter>Moteur</Filter>
+    </None>
+    <None Include="GameManager.inl">
+      <Filter>Moteur</Filter>
+    </None>
+    <None Include="Scene.inl">
+      <Filter>Moteur</Filter>
     </None>
     <None Include="Transition.inl">
-      <Filter>ProjetIA\StateMachine</Filter>
+      <Filter>StateMachine</Filter>
     </None>
     <None Include="StateMachine.inl">
-      <Filter>ProjetIA\StateMachine</Filter>
+      <Filter>StateMachine</Filter>
     </None>
-    <None Include="Behaviour.inl">
-      <Filter>ProjetIA\StateMachine</Filter>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Moteur">
+      <UniqueIdentifier>{10f8d693-8dbd-4e11-b2f1-21f3c1d534d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ProjetIA">
+      <UniqueIdentifier>{b9eeec8a-71b5-423a-86af-3f8a6339c57f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test">
+      <UniqueIdentifier>{082b6deb-85f9-449b-8ef8-14e80c8036e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StateMachine">
+      <UniqueIdentifier>{743eaf25-4759-4c68-8795-c20fd81dbb61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
