@@ -22,13 +22,3 @@ void Ball::OnUpdate()
 	float TraveledDistanceRatio = (ballFromDist - (rugbyMenDist / 2) / rugbyMenDist) + .5f;
 	mShape.setRadius(Resources::BallSize * (1 + TraveledDistanceRatio));
 }
-
-void Ball::OnCollision(Entity* collidedWith)
-{
-	if (collidedWith != mFrom)
-	{
-		RugbyMan* collidedRugbyMan = reinterpret_cast<RugbyMan*>(collidedWith);
-		collidedRugbyMan->ReceiveBall();
-		Destroy();
-	}
-}
