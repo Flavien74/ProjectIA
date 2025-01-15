@@ -40,14 +40,18 @@ void Field::OnInitialize()
 	{
 		mAllRugbyMan[i]->SetPosition(mSpawns[i].x, mSpawns[i].y);
 	}
-	for (int i = 0; i < 5; i++)
-	{
-		mAllRugbyMan[i]->OnStart((Tag::TEAMBLUE), mSpawns[i], false);
-	}
-	for (int i = 5; i < 10; i++)
-	{
-		mAllRugbyMan[i]->OnStart((Tag::TEAMRED), mSpawns[i], false);
-	}
+
+	mAllRugbyMan[0]->OnStart((Tag::TEAMBLUE),1, mSpawns[0], false);
+	mAllRugbyMan[1]->OnStart((Tag::TEAMBLUE), 1, mSpawns[1], false);
+	mAllRugbyMan[2]->OnStart((Tag::TEAMBLUE), 2, mSpawns[2], false);
+	mAllRugbyMan[3]->OnStart((Tag::TEAMBLUE), 3, mSpawns[3], false);
+	mAllRugbyMan[4]->OnStart((Tag::TEAMBLUE), 3, mSpawns[4], false);
+	mAllRugbyMan[5]->OnStart((Tag::TEAMRED), 1, mSpawns[5], false);
+	mAllRugbyMan[6]->OnStart((Tag::TEAMRED), 1, mSpawns[6], false);
+	mAllRugbyMan[7]->OnStart((Tag::TEAMRED), 2, mSpawns[7], false);
+	mAllRugbyMan[8]->OnStart((Tag::TEAMRED), 3, mSpawns[8], false);
+	mAllRugbyMan[9]->OnStart((Tag::TEAMRED), 3, mSpawns[9], false);
+
 	mTouchdownLines[0] = width * 0.1;
 	mTouchdownLines[1] = width * 0.9;
 

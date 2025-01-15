@@ -31,9 +31,9 @@ void RugbyMan::PassBall(RugbyMan* to)
 }
 
 
-void RugbyMan::OnStart(int tag, sf::Vector2i spawn, bool isBallMine)
+void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 {
-	//mLane = lane;
+	mLane = lane;
 	mHaveBall = isBallMine;
 	DefautPos = spawn;
 	SetTag(tag);

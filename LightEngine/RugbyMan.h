@@ -32,7 +32,7 @@ public:
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);
-	void OnStart(int tag, sf::Vector2i spawn, bool);
+	void OnStart(int tag, int lane, sf::Vector2i spawn, bool);
 
 	void ReceiveBall();
 	void LooseBall();
