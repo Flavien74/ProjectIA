@@ -55,7 +55,7 @@ void Field::OnInitialize()
 
 	rugbyDebug->SetListOfRugbyMan(mAllRugbyMan);
 
-	GiveTheBallRandom(0,10);
+	GiveTheBallRandom(0, 10);
 }
 
 void Field::OnEvent(const sf::Event& event)
@@ -67,10 +67,9 @@ void Field::OnUpdate()
 {
 	rugbyDebug->OnUpdate();
 	Debug d;
-	d.DrawLine(mTouchdownLines[0],0 , mTouchdownLines[0], GetWindowHeight(), sf::Color::White);
+	d.DrawLine(mTouchdownLines[0], 0, mTouchdownLines[0], GetWindowHeight(), sf::Color::White);
 	d.DrawLine(mTouchdownLines[1], 0, mTouchdownLines[1], GetWindowHeight(), sf::Color::White);
-
-	IsPlayerScoring(mBallOwner);
+	if (mBallOwner != nullptr)IsPlayerScoring(mBallOwner);
 }
 
 void Field::PassBall(RugbyMan* from, RugbyMan* to)
@@ -104,7 +103,7 @@ void Field::IsPlayerScoring(RugbyMan* ballOwner)
 		{
 			ScoreBlue++;
 			Reset();
-			GiveTheBallRandom(5,4);
+			GiveTheBallRandom(5, 4);
 		}
 
 	}
@@ -113,7 +112,7 @@ void Field::IsPlayerScoring(RugbyMan* ballOwner)
 		{
 			ScoreRed++;
 			Reset();
-			GiveTheBallRandom(0,5);
+			GiveTheBallRandom(0, 5);
 		}
 	}
 }
@@ -127,7 +126,7 @@ void Field::Reset()
 	}
 }
 
-void Field::GiveTheBallRandom(int min,int max)
+void Field::GiveTheBallRandom(int min, int max)
 {
 	srand(time(NULL));
 	mAllRugbyMan[min + rand() % max]->ReceiveBall();
