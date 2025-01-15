@@ -41,7 +41,6 @@ public:
 
 	std::vector<sf::Vector2i> mSpawns;
 
-
 	void OnInitialize() override;
 	void OnEvent(const sf::Event& event) override;
 	void OnUpdate() override;

@@ -7,10 +7,8 @@ private:
 	float mStrength;
 	float mSprintStrength;
 
-	float mPassCooldownAfterCatch;
-	float mImmuneTimeAfterCatch;
-
-	float mDetectionRange;
+	float mAlliesDetectionRange;
+	float mEnemiesDetectionRange;
 
 	std::string mName;
 
@@ -20,12 +18,18 @@ private:
 	bool mHaveBall;
 
 public:
+	float mImmuneTimeAfterCatch = 0.5f;
+	float mPassCooldownAfterCatch = 0.5f;
+	float mAccelerationAfterCatch = 0.5f;
+
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
 	sf::Vector2f GetDirection() const { return mDirection; }
 	sf::Vector2i GetDefaultPos() const { return DefautPos; }
-	float GetDetectionRange() const { return mDetectionRange; }
+	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
+	float GetEnemiesDetectionRange() const { return mEnemiesDetectionRange; }
+
 
 	bool HaveBall() { return mHaveBall; }
 	std::string GetName() const { return mName; }
@@ -41,4 +45,12 @@ protected:
 	void OnUpdate() override;
 	void OnCollision(Entity* pCollidedWith) override;
 	void GiveTheBall(RugbyMan* pCollidedWith);
+
+	friend class RugbyManAction_EnemyGotBall;
+	friend class RugbyManAction_WithoutBall;
+	friend class RugbyManAction_PossessBall;
+
+	friend class PlantCondition_FullAmmo;
+	friend class PlantCondition_NoAmmo;
+	friend class PlantCondition_ZombieOnLane;
 };

@@ -5,7 +5,7 @@
 #include <iostream>
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mPassCooldownAfterCatch(1), mImmuneTimeAfterCatch(0.5), mDetectionRange(200), mName("Jake")
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake")
 {
 	mRigidBody = true;
 }
@@ -83,3 +83,4 @@ void RugbyMan::LooseBall()
 	mHaveBall = false;
 	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(nullptr);
 }
+

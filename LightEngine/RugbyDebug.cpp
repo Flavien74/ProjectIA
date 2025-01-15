@@ -96,7 +96,7 @@ void RugbyDebug::OnUpdate()
 		int behindRelative = (BallOwner->IsTag(Field::TEAMBLUE)) ? -1 : 1;
 
 		if (Utils::GetDistance(BallOwner->GetPosition().x, BallOwner->GetPosition().y,
-			rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) > BallOwner->GetDetectionRange())
+			rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) > BallOwner->GetAlliesDetectionRange())
 			continue;
 
 		if (BallOwner->IsTag(Field::TEAMBLUE))

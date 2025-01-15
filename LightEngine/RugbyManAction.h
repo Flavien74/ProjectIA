@@ -14,13 +14,22 @@ public:
 class RugbyManAction_WithoutBall : public Action <RugbyMan>
 {
 public:
-	void Start(RugbyMan* rugbyman) override {}
-	void Update(RugbyMan* rugbyman) override {}
-	void End(RugbyMan* rugbyman) override {}
+	void Start(RugbyMan* rugbyman) override;
+	void Update(RugbyMan* rugbyman) override;
+	void End(RugbyMan* rugbyman) override;
 };
 
 class RugbyManAction_PossessBall : public Action <RugbyMan>
 {
+	float mImmuneTimer;
+	float mPassCooldownTimer;
+	float mAccelerationTimer;
+
+	float mSpeedMultiplicator = 1.2f;
+
+	bool mCanPass = false;
+	bool mIsImmune = false;
+
 public:
 	void Start(RugbyMan* rugbyman) override {}
 	void Update(RugbyMan* rugbyman) override {}
