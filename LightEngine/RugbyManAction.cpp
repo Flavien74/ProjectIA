@@ -7,7 +7,6 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
 	if (mTarget == nullptr)
 		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
-	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
 
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
@@ -15,11 +14,16 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 
 void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 {
-	//Se rapproche du joueur qui a la ball tout en respectant +/- sa range sans jamais le d�pacer
 }
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
+	mBallOwner = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+	sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
+
+	Utils::Normalize(direction);
+
+	direction *= Utils::GetDistance(mBallOwner->GetPosition().x, mBallOwner->GetPosition().y, rugbyman->GetPosition().x, rugbyman->GetPosition().y) - mBallOwner->GetAlliesDetectionRange() * .75f;
 	/////Cherche a se d�marquer
 }
 
