@@ -1,4 +1,3 @@
-#include "Field.h"
 #include "RugbyManAction.h"
 #include "GameManager.h"
 #include "Field.h"
@@ -8,7 +7,12 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
 	if (mTarget == nullptr)
 		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
 
+	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
+
+	rugbyman->KeepInRect(playerLane);
+}
 /// RAPH (haut) Flav (bas)
 
 void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
@@ -27,11 +31,6 @@ void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 void RugbyManAction_WithoutBall::End(RugbyMan* rugbyman)
 {
 	//transi
-	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
-
-	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
-
-	rugbyman->KeepInRect(playerLane);
 }
 
 

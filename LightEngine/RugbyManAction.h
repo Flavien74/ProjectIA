@@ -23,6 +23,7 @@ public:
 
 class RugbyManAction_PossessBall : public Action <RugbyMan>
 {
+private:
 	float mImmuneTimer;
 	float mPassCooldownTimer;
 	float mAccelerationTimer;
