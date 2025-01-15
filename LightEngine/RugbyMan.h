@@ -38,6 +38,9 @@ public:
 	float mPassCooldownAfterCatch = 0.5f;
 	float mAccelerationAfterCatch = 0.5f;
 
+	bool mCanPass = false;
+	bool mIsImmune = false;
+
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }

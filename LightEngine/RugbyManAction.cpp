@@ -60,7 +60,7 @@ void RugbyManAction_PossessBall::Start(RugbyMan* rugbyman)
 	float newSpeed = rugbyman->GetSpeed() * mSpeedMultiplicator;
 	rugbyman->SetSpeed(newSpeed);
 	rugbyman->SetImmune(true);
-	mCanPass = false;
+	rugbyman->mCanPass = false;
 	Field* pScene = rugbyman->GetScene<Field>();
 	pScene->mBallOwner = rugbyman;
 }
@@ -73,9 +73,9 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 
 	if (mImmuneTimer < rugbyman->mImmuneTimeAfterCatch)
 		rugbyman->SetImmune(false);
-	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
-		mCanPass = true;
-	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
+	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
+		rugbyman->mCanPass = true;
+	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
 		rugbyman->SetSpeed(rugbyman->GetSpeed());
 
 	for (RugbyMan* toDodge : rugbyman->GetScene<Field>()->mAllRugbyMan)
@@ -88,7 +88,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 		if (dist > rugbyman->GetEnemiesDetectionRange()) continue;
 
 
-		if (!mCanPass) continue;
+		if (!rugbyman->mCanPass) continue;
 
 
 		for (RugbyMan* toPass : rugbyman->GetScene<Field>()->mAllRugbyMan)
@@ -112,7 +112,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	}
 
 	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
-	rugbyman->SetDirection(dir, 0);
+	rugbyman->GoToDirection(dir, rugbyman->mSpeed);
 
 	/////cherche a marqu� et si il est marqu�, fait une passe au gadji le plus close
 }

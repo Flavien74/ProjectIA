@@ -66,6 +66,22 @@ RugbyMan::RugbyMan() :
 	mStateMachine.SetState(State::WithoutBall);
 }
 
+void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
+{
+	mLane = lane;
+	mHaveBall = isBallMine;
+	DefautPos = spawn;
+	SetTag(tag);
+	/*if (IsTag(Field::Tag::TEAMBLUE)) {
+		mDirection = sf::Vector2f(0.5f, 0);
+	}
+	else {
+		mDirection = sf::Vector2f(-0.5f, 0);
+	}*/
+	mSpeed = 50;
+	SetDirection(mDirection.x, mDirection.y, mSpeed);
+}
+
 void RugbyMan::KeepInRect(AABB rect)
 {
 	if (GetPosition().x > rect.xMax)
@@ -105,16 +121,6 @@ void RugbyMan::PassBall(RugbyMan* to)
 	dynamic_cast<Field*>(GetScene())->mBall->SetDir(to->GetPosition());
 	dynamic_cast<Field*>(GetScene())->mBall->SetTag(Field::BALL);
 	LooseBall();
-}
-
-
-void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
-{
-	mLane = lane;
-	mHaveBall = isBallMine;
-	DefautPos = spawn;
-	SetTag(tag);
-	mSpeed = 50;
 }
 
 const char* RugbyMan::GetStateName(State state) const
