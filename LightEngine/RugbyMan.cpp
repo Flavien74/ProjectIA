@@ -4,6 +4,27 @@
 #include "Resources.h"
 #include <iostream>
 
+void RugbyMan::KeepInRect(AABB rect)
+{
+	if (GetPosition().x > rect.xMax)
+	{
+		SetPosition(GetPosition().x - (GetPosition().x - rect.xMax), GetPosition().y);
+	}
+	else if (GetPosition().x < rect.xMin)
+	{
+		SetPosition(GetPosition().x - (GetPosition().x - rect.xMin), GetPosition().y);
+	}
+
+	if (GetPosition().y > rect.yMax)
+	{
+		SetPosition(GetPosition().x, GetPosition().y - (GetPosition().y - rect.yMax));
+	}
+	else if (GetPosition().y < rect.yMin)
+	{
+		SetPosition(GetPosition().x, GetPosition().y - (GetPosition().y - rect.yMin));
+	}
+}
+
 RugbyMan::RugbyMan() :
 	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake")
 {
@@ -38,7 +59,7 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 	DefautPos = spawn;
 	SetTag(tag);
 	if (IsTag(Field::Tag::TEAMBLUE)) {
-		mDirection = sf::Vector2f(0.5f,0);
+		mDirection = sf::Vector2f(0.5f, 0);
 	}
 	else {
 		mDirection = sf::Vector2f(-0.5f, 0);
@@ -49,7 +70,7 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 
 void RugbyMan::OnUpdate()
 {
-
+	this->KeepInRect(dynamic_cast<Field*>(GetScene())->mLanes[mLane]);
 }
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)

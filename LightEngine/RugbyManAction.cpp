@@ -1,8 +1,13 @@
+#include "Field.h"
 #include "RugbyManAction.h"
 #include "GameManager.h"
 #include "Field.h"
 #include "Utils.h"
 
+void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
+{
+	if (mTarget == nullptr)
+		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
 
 /// RAPH (haut) Flav (bas)
 
@@ -11,17 +16,22 @@ void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 	sf::Vector2f baseDir = rugbyman->GetDirection();
 	float baseSpeed = rugbyman->GetSpeed();
 	rugbyman->SetDirection(baseDir.x, baseDir.y, baseSpeed);
-	//Se rapproche du joueur qui a la ball tout en respectant +/- sa range sans jamais le dépacer
+	//Se rapproche du joueur qui a la ball tout en respectant +/- sa range sans jamais le dï¿½pacer
 }
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
-	/////Cherche a se démarquer
+	/////Cherche a se dï¿½marquer
 }
 
 void RugbyManAction_WithoutBall::End(RugbyMan* rugbyman)
 {
 	//transi
+	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
+
+	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
+
+	rugbyman->KeepInRect(playerLane);
 }
 
 
@@ -52,7 +62,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	if (mCanPass){
 
 	}
-	/////cherche a marqué et si il est marqué, fait une passe au gadji le plus close
+	/////cherche a marquï¿½ et si il est marquï¿½, fait une passe au gadji le plus close
 }
 
 void RugbyManAction_PossessBall::End(RugbyMan* rugbyman)

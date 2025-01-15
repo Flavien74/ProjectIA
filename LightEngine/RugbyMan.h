@@ -29,10 +29,12 @@ public:
 	sf::Vector2i GetDefaultPos() const { return DefautPos; }
 	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
 	float GetEnemiesDetectionRange() const { return mEnemiesDetectionRange; }
+	int GetLane() const { return mLane; }
 
-
-	bool HaveBall() { return mHaveBall; }
+	bool HaveBall() const { return mHaveBall; }
 	std::string GetName() const { return mName; }
+
+	void KeepInRect(class AABB rect);
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);
