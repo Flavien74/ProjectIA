@@ -57,9 +57,32 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
 		rugbyman->SetSpeed(rugbyman->GetSpeed());
 
-	if (mCanPass){
+	for (RugbyMan* toDodge : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+	{
+		if (toDodge->GetTag() == rugbyman->GetTag()) continue;
 
+		if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
+			toDodge->GetPosition().x, toDodge->GetPosition().y) <= rugbyman->GetEnemiesDetectionRange())
+			continue;
+		
+		if (!mCanPass) 
+			continue;
+
+		for (RugbyMan* toPass : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+		{
+			if (toPass->GetTag() != rugbyman->GetTag()) continue;
+
+			if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
+				toPass->GetPosition().x, toPass->GetPosition().y) <= rugbyman->GetAlliesDetectionRange())
+				continue;
+
+			rugbyman->PassBall(toPass);
+		}
 	}
+
+	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
+	rugbyman->GoToDirection(dir, 0);
+
 	/////cherche a marqu� et si il est marqu�, fait une passe au gadji le plus close
 }
 
