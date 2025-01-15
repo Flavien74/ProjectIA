@@ -21,13 +21,6 @@ bool RugbyManCondition_GetBall::OnTest(RugbyMan* owner)
 	return false;
 }
 
-bool RugbyManCondition_EnemyContact::OnTest(RugbyMan* owner)
-{
-	if (owner->IsEnemyOnContact()&& !owner->mIsImmune)
-		return true;
-	return false;
-}
-
 bool RugbyManCondition_Pass::OnTest(RugbyMan* owner)
 {
 	bool condition1 = false;

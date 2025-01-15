@@ -26,9 +26,9 @@ private:
 class RugbyManAction_PossessBall : public Action <RugbyMan>
 {
 private:
-	float mImmuneTimer;
-	float mPassCooldownTimer;
-	float mAccelerationTimer;
+	float mImmuneTimer = 0;
+	float mPassCooldownTimer = 0;
+	float mAccelerationTimer = 0;
 
 	float mSpeedMultiplicator = 1.2f;
 

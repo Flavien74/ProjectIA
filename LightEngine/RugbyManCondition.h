@@ -15,12 +15,6 @@ public:
 	bool OnTest(RugbyMan* owner) override;
 };
 
-class RugbyManCondition_EnemyContact : public Condition<RugbyMan>
-{
-public:
-	bool OnTest(RugbyMan* owner) override;
-};
-
 class RugbyManCondition_Pass : public Condition<RugbyMan>
 {
 public:
