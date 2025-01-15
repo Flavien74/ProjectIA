@@ -7,7 +7,6 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
 	if (mTarget == nullptr)
 		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
-	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
 
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
@@ -15,11 +14,16 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 
 void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 {
-	//Se rapproche du joueur qui a la ball tout en respectant +/- sa range sans jamais le d�pacer
 }
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
+	mBallOwner = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+	sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
+
+	Utils::Normalize(direction);
+
+	direction *= Utils::GetDistance(mBallOwner->GetPosition().x, mBallOwner->GetPosition().y, rugbyman->GetPosition().x, rugbyman->GetPosition().y) - mBallOwner->GetAlliesDetectionRange() * .75f;
 	/////Cherche a se d�marquer
 }
 
@@ -53,9 +57,32 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
 		rugbyman->SetSpeed(rugbyman->GetSpeed());
 
-	if (mCanPass){
+	for (RugbyMan* toDodge : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+	{
+		if (toDodge->GetTag() == rugbyman->GetTag()) continue;
 
+		if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
+			toDodge->GetPosition().x, toDodge->GetPosition().y) <= rugbyman->GetEnemiesDetectionRange())
+			continue;
+		
+		if (!mCanPass) 
+			continue;
+
+		for (RugbyMan* toPass : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+		{
+			if (toPass->GetTag() != rugbyman->GetTag()) continue;
+
+			if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
+				toPass->GetPosition().x, toPass->GetPosition().y) <= rugbyman->GetAlliesDetectionRange())
+				continue;
+
+			rugbyman->PassBall(toPass);
+		}
 	}
+
+	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
+	rugbyman->GoToDirection(dir, 0);
+
 	/////cherche a marqu� et si il est marqu�, fait une passe au gadji le plus close
 }
 
