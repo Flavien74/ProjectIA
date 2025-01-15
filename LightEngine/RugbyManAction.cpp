@@ -4,7 +4,7 @@
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
 	if (mTarget == nullptr)
-		dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
 
 	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
 
