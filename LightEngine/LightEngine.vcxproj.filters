@@ -49,11 +49,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Action.h" />
     <ClInclude Include="Behaviour.h">
-      <Filter>Moteur</Filter>
-    </ClInclude>
-    <ClInclude Include="Condition.h">
       <Filter>Moteur</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
@@ -104,12 +100,15 @@
     <ClInclude Include="RugbyDebug.h">
       <Filter>ProjetIA</Filter>
     </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Behaviour.inl">
-      <Filter>Moteur</Filter>
-    </None>
-    <None Include="Condition.inl">
       <Filter>Moteur</Filter>
     </None>
     <None Include="Entity.inl">
@@ -125,6 +124,9 @@
       <Filter>StateMachine</Filter>
     </None>
     <None Include="StateMachine.inl">
+      <Filter>StateMachine</Filter>
+    </None>
+    <None Include="Condition.inl">
       <Filter>StateMachine</Filter>
     </None>
   </ItemGroup>

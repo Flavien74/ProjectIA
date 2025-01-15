@@ -67,6 +67,7 @@ void Field::OnUpdate()
 {
 	rugbyDebug->OnUpdate();
 	Debug d;
+
 	d.DrawLine(mTouchdownLines[0], 0, mTouchdownLines[0], GetWindowHeight(), sf::Color::White);
 	d.DrawLine(mTouchdownLines[1], 0, mTouchdownLines[1], GetWindowHeight(), sf::Color::White);
 	if (mBallOwner != nullptr)IsPlayerScoring(mBallOwner);
@@ -123,6 +124,7 @@ void Field::Reset()
 	{
 		rugbyman->SetPosition(rugbyman->GetDefaultPos().x, rugbyman->GetDefaultPos().y);
 		rugbyman->LooseBall();
+		rugbyDebug->ResetEntitySelected();
 	}
 }
 

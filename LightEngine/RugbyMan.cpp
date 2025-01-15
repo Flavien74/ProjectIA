@@ -38,11 +38,13 @@ void RugbyMan::OnStart(int tag, sf::Vector2i spawn, bool isBallMine)
 	DefautPos = spawn;
 	SetTag(tag);
 	if (IsTag(Field::Tag::TEAMBLUE)) {
-		SetDirection(.5f, 0, 50);
+		mDirection = sf::Vector2f(0.5f,0);
 	}
 	else {
-		SetDirection(-.5f, 0, 50);
+		mDirection = sf::Vector2f(-0.5f, 0);
 	}
+	mSpeed = 50;
+	SetDirection(mDirection.x, mDirection.y, mSpeed);
 }
 
 void RugbyMan::OnUpdate()

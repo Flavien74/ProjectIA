@@ -12,7 +12,7 @@ public:
 	void OnDebugEvent(const sf::Event& event, RugbyMan* ballOwner);
 	void OnUpdate();
 	void SetListOfRugbyMan(std::vector<RugbyMan*>&);
-
+	void ResetEntitySelected();
 private:
 	std::vector<RugbyMan*> mAllRugbyMan;
 	RugbyMan* mEntitySelected;

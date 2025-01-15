@@ -23,8 +23,10 @@ public:
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
+	sf::Vector2f GetDirection() const { return mDirection; }
 	sf::Vector2i GetDefaultPos() const { return DefautPos; }
 	float GetDetectionRange() const { return mDetectionRange; }
+
 	bool HaveBall() { return mHaveBall; }
 	std::string GetName() const { return mName; }
 

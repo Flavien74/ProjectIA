@@ -46,6 +46,14 @@ void RugbyDebug::SetListOfRugbyMan(std::vector<RugbyMan*>& list)
 	mAllRugbyMan = list;
 }
 
+void RugbyDebug::ResetEntitySelected()
+{
+	/*sf::Vector2f baseDir = mEntitySelected->GetDirection();
+	float baseSpeed = mEntitySelected->GetSpeed();
+	mEntitySelected->SetDirection(baseDir.x, baseDir.y, baseSpeed);
+	mEntitySelected = nullptr;*/
+}
+
 RugbyMan* RugbyDebug::TrySetSelectedEntity(RugbyMan* pEntity, int x, int y)
 {
 	if (pEntity->IsInside(x, y) == false) {
