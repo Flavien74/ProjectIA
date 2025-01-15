@@ -74,13 +74,6 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 	mSpeed = 50;
 	mDefaultSpeed = mSpeed;
 	SetTag(tag);
-	/*if (IsTag(Field::Tag::TEAMBLUE)) {
-		mDirection = sf::Vector2f(0.5f, 0);
-	}
-	else {
-		mDirection = sf::Vector2f(-0.5f, 0);
-	}*/
-	SetDirection(mDirection.x, mDirection.y, mSpeed);
 }
 
 void RugbyMan::KeepInRect(AABB rect)
