@@ -10,8 +10,6 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 	AABB playerLane = dynamic_cast<Field*>(rugbyman->GetScene())->mLanes[rugbyman->GetLane()];
 
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
-
-	rugbyman->KeepInRect(playerLane);
 }
 /// RAPH (haut) Flav (bas)
 
