@@ -20,14 +20,14 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pEnemyGotBall->CreateTransition(State::WithoutBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>(true);
 		}
 
 		//-> POSSESSBALL
 		{
 			auto transition = pEnemyGotBall->CreateTransition(State::PossessBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
 	}
 
@@ -47,7 +47,7 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pWhitoutBall->CreateTransition(State::PossessBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
 	}
 
@@ -60,14 +60,7 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_Pass>();
-		}
-
-		//-> WHITHOUTBALL
-		{
-			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
-
-			auto condition = transition->AddCondition<RugbyManCondition_EnemyContact>();
+			transition->AddCondition<RugbyManCondition_GetBall>(false);
 		}
 	}
 	mStateMachine.SetState(State::WithoutBall);
@@ -121,14 +114,7 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 	mHaveBall = isBallMine;
 	DefautPos = spawn;
 	SetTag(tag);
-	if (IsTag(Field::Tag::TEAMBLUE)) {
-		mDirection = sf::Vector2f(0.5f, 0);
-	}
-	else {
-		mDirection = sf::Vector2f(-0.5f, 0);
-	}
 	mSpeed = 50;
-	SetDirection(mDirection.x, mDirection.y, mSpeed);
 }
 
 const char* RugbyMan::GetStateName(State state) const

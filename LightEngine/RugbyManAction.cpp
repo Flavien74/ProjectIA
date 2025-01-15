@@ -10,13 +10,14 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 
 	if (mTarget == nullptr)
 		return;
-
+	
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
 /// RAPH (haut) Flav (bas)
 
 void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 {
+
 }
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
@@ -24,9 +25,20 @@ void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 	mBallOwner = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
 	sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
 
+	if (rugbyman->GetTag() == Field::TEAMBLUE)
+	{
+		if (rugbyman->GetPosition().x > mBallOwner->GetPosition().x) return;
+	}
+	else
+	{
+		if (rugbyman->GetPosition().x < mBallOwner->GetPosition().x) return;
+	}
+
+
 	Utils::Normalize(direction);
 
 	direction *= Utils::GetDistance(mBallOwner->GetPosition().x, mBallOwner->GetPosition().y, rugbyman->GetPosition().x, rugbyman->GetPosition().y) - mBallOwner->GetAlliesDetectionRange() * .75f;
+	rugbyman->GoToPosition(direction.x, direction.y);
 	/////Cherche a se d�marquer
 }
 
@@ -59,7 +71,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
 		rugbyman->SetSpeed(rugbyman->GetSpeed());
 
-	for (RugbyMan* toDodge : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+	for (RugbyMan* toDodge : rugbyman->GetScene<Field>()->mAllRugbyMan)
 	{
 		if (toDodge->GetTag() == rugbyman->GetTag()) continue;
 
@@ -72,7 +84,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 		if (!mCanPass) continue;
 
 
-		for (RugbyMan* toPass : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
+		for (RugbyMan* toPass : rugbyman->GetScene<Field>()->mAllRugbyMan)
 		{
 			if (toPass->GetTag() != rugbyman->GetTag()) continue;
 
@@ -84,7 +96,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	}
 
 	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
-	rugbyman->GoToDirection(dir, 0);
+	rugbyman->SetDirection(dir, 0);
 
 	/////cherche a marqu� et si il est marqu�, fait une passe au gadji le plus close
 }
