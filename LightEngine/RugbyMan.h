@@ -26,9 +26,12 @@ public:
 	sf::Vector2f GetDirection() const { return mDirection; }
 	sf::Vector2i GetDefaultPos() const { return DefautPos; }
 	float GetDetectionRange() const { return mDetectionRange; }
+	int GetLane() const { return mLane; }
 
-	bool HaveBall() { return mHaveBall; }
+	bool HaveBall() const { return mHaveBall; }
 	std::string GetName() const { return mName; }
+
+	void KeepInRect(class AABB rect);
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);
