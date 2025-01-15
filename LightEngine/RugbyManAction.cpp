@@ -6,7 +6,7 @@
 
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
-	mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+	mTarget = GetScene<Field>()->mBallOwner;
 
 	if (mTarget == nullptr)
 		return;
