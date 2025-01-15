@@ -20,14 +20,14 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pEnemyGotBall->CreateTransition(State::WithoutBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>(true);
 		}
 
 		//-> POSSESSBALL
 		{
 			auto transition = pEnemyGotBall->CreateTransition(State::PossessBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
 	}
 
@@ -47,7 +47,7 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pWhitoutBall->CreateTransition(State::PossessBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
 	}
 
@@ -60,14 +60,7 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_Pass>();
-		}
-
-		//-> WHITHOUTBALL
-		{
-			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
-
-			auto condition = transition->AddCondition<RugbyManCondition_EnemyContact>();
+			transition->AddCondition<RugbyManCondition_GetBall>(false);
 		}
 	}
 	mStateMachine.SetState(State::WithoutBall);

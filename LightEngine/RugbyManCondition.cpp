@@ -5,10 +5,6 @@
 
 bool RugbyManCondition_AllieGetBall::OnTest(RugbyMan* owner)
 {
-	if (owner->HaveBall())
-	{
-		return false;
-	}
 	for (auto rugbymen : owner->GetScene<Field>()->mAllRugbyMan)
 	{
 		if (rugbymen->IsTag(owner->mTag) && rugbymen->HaveBall()) {
