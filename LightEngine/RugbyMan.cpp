@@ -103,6 +103,11 @@ void RugbyMan::KeepInRect(AABB rect)
 	}
 }
 
+void RugbyMan::SetImmune(bool state)
+{
+	mIsImmune = state;
+}
+
 void RugbyMan::PassBall(RugbyMan* to)
 {
 	if (dynamic_cast<Field*>(GetScene())->mBall != nullptr || to == this || to == nullptr) return;
@@ -147,9 +152,8 @@ void RugbyMan::OnCollision(Entity* pCollidedWith)
 		ReceiveBall();
 		return;
 	}
-	if (mHaveBall && !pCollidedWith->IsTag(mTag) && !dynamic_cast<RugbyMan*>(pCollidedWith)->IsImmune()) {
+	if (mHaveBall && pCollidedWith->GetTag() != mTag && !IsImmune()) {
 		RugbyMan* pRugbyMan = dynamic_cast<RugbyMan*>(pCollidedWith);
-		mEnemyOnContact = true;
 		GiveTheBall(pRugbyMan);
 	}
 }
@@ -158,12 +162,11 @@ void RugbyMan::GiveTheBall(RugbyMan* pCollidedWith)
 {
 	mHaveBall = false;
 	pCollidedWith->ReceiveBall();
-	std::cout << "I gave the ball" << std::endl;
 }
 
 void RugbyMan::ReceiveBall()
 {
-	std::cout << "I have the ball" << std::endl;
+	mIsImmune = true;
 	mHaveBall = true;
 	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(this);
 }

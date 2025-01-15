@@ -29,12 +29,11 @@ private:
 	int mLane;
 	sf::Vector2i DefautPos;
 
-	bool mEnemyOnContact = false;
 	bool mHaveBall;
 	bool mIsImmune = false;
 
 public:
-	float mImmuneTimeAfterCatch = 2.8f;
+	float mImmuneTimeAfterCatch = .75f;
 	float mPassCooldownAfterCatch = 0.5f;
 	float mAccelerationAfterCatch = 0.5f;
 
@@ -51,13 +50,12 @@ public:
 	int GetLane() const { return mLane; }
 
 	bool IsImmune() const { return mIsImmune; }
-	bool IsEnemyOnContact() const { return mEnemyOnContact; }
 	bool HaveBall() const { return mHaveBall; }
 	std::string GetName() const { return mName; }
 
 	void KeepInRect(class AABB rect);
 
-	void SetImmune(bool state) { mIsImmune = state; }
+	void SetImmune(bool state);
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);

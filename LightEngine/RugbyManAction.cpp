@@ -59,10 +59,13 @@ void RugbyManAction_PossessBall::Start(RugbyMan* rugbyman)
 {
 	float newSpeed = rugbyman->GetSpeed() * mSpeedMultiplicator;
 	rugbyman->SetSpeed(newSpeed);
-	rugbyman->SetImmune(true);
 	rugbyman->mCanPass = false;
 	Field* pScene = rugbyman->GetScene<Field>();
 	pScene->mBallOwner = rugbyman;
+
+	mImmuneTimer = 0;
+	mPassCooldownTimer = 0;
+	mAccelerationTimer = 0;
 }
 
 void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
@@ -71,7 +74,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	mPassCooldownTimer += GameManager::Get()->GetDeltaTime();
 	mAccelerationTimer += GameManager::Get()->GetDeltaTime();
 
-	if (mImmuneTimer < rugbyman->mImmuneTimeAfterCatch)
+	if (mImmuneTimer > rugbyman->mImmuneTimeAfterCatch)
 		rugbyman->SetImmune(false);
 	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
 		rugbyman->mCanPass = true;
