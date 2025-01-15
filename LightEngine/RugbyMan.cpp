@@ -4,6 +4,74 @@
 #include "Resources.h"
 #include <iostream>
 #include "RugbyManAction.h"
+#include "RugbyManCondition.h"
+
+RugbyMan::RugbyMan() :
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake"), mStateMachine(this, State::Count)
+{
+	mRigidBody = true;
+
+	//-> ENEMYGOTBALL
+	{
+		Behaviour<RugbyMan>* pEnemyGotBall = mStateMachine.CreateBehaviour(State::EnemyGotBall);
+		pEnemyGotBall->AddAction<RugbyManAction_EnemyGotBall>();
+
+		//-> WHITHOUTBALL
+		{
+			auto transition = pEnemyGotBall->CreateTransition(State::WithoutBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>();
+		}
+
+		//-> POSSESSBALL
+		{
+			auto transition = pEnemyGotBall->CreateTransition(State::PossessBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+		}
+	}
+
+	//-> WHITHOUTBALL
+	{
+		Behaviour<RugbyMan>* pWhitoutBall = mStateMachine.CreateBehaviour(State::WithoutBall);
+		pWhitoutBall->AddAction<RugbyManAction_EnemyGotBall>();
+
+		//-> ENEMYGOTBALL
+		{
+			auto transition = pWhitoutBall->CreateTransition(State::EnemyGotBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_EnemyContact>();
+		}
+
+		//-> POSSESSBALL
+		{
+			auto transition = pWhitoutBall->CreateTransition(State::PossessBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>();
+		}
+	}
+
+	//-> POSSESSBALL
+	{
+		Behaviour<RugbyMan>* pPossessBall = mStateMachine.CreateBehaviour(State::PossessBall);
+		pPossessBall->AddAction<RugbyManAction_PossessBall>();
+
+		//-> WHITHOUTBALL
+		{
+			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_Pass>();
+		}
+
+		//-> WHITHOUTBALL
+		{
+			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_EnemyContact>();
+		}
+	}
+	mStateMachine.SetState(State::WithoutBall);
+}
 
 void RugbyMan::KeepInRect(AABB rect)
 {
@@ -24,18 +92,6 @@ void RugbyMan::KeepInRect(AABB rect)
 	{
 		SetPosition(GetPosition().x, GetPosition().y - (GetPosition().y - rect.yMin));
 	}
-}
-
-RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake"), mStateMachine(this, State::Count)
-{
-	mRigidBody = true;
-
-	{
-		Behaviour<RugbyMan>* pEnemyGotBall = mStateMachine.CreateBehaviour(State::EnemyGotBall);
-		pEnemyGotBall->AddAction<RugbyManAction_EnemyGotBall>();
-	}
-
 }
 
 void RugbyMan::PassBall(RugbyMan* to)
@@ -89,16 +145,19 @@ const char* RugbyMan::GetStateName(State state) const
 void RugbyMan::OnUpdate()
 {
 	this->KeepInRect(dynamic_cast<Field*>(GetScene())->mLanes[mLane]);
+	mStateMachine.Update();
 }
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)
 {
+	
 	if (pCollidedWith->IsTag(Field::Tag::BALL)) {
 		ReceiveBall();
 		return;
 	}
 	if (mHaveBall && !pCollidedWith->IsTag(mTag)) {
 		RugbyMan* pRugbyMan = dynamic_cast<RugbyMan*>(pCollidedWith);
+		mEnemyOnContact = true;
 		GiveTheBall(pRugbyMan);
 	}
 }
