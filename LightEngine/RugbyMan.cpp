@@ -7,7 +7,7 @@
 #include "RugbyManCondition.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(100), mEnemiesDetectionRange(50), mName("Jake"), mStateMachine(this, State::Count)
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mName("Jake"), mStateMachine(this, State::Count)
 {
 	mRigidBody = true;
 
@@ -34,13 +34,13 @@ RugbyMan::RugbyMan() :
 	//-> WHITHOUTBALL
 	{
 		Behaviour<RugbyMan>* pWhitoutBall = mStateMachine.CreateBehaviour(State::WithoutBall);
-		pWhitoutBall->AddAction<RugbyManAction_EnemyGotBall>();
+		pWhitoutBall->AddAction<RugbyManAction_WithoutBall>();
 
 		//-> ENEMYGOTBALL
 		{
 			auto transition = pWhitoutBall->CreateTransition(State::EnemyGotBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_EnemyContact>();
+			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>(false);
 		}
 
 		//-> POSSESSBALL
@@ -136,12 +136,12 @@ void RugbyMan::OnUpdate()
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)
 {
-	
+
 	if (pCollidedWith->IsTag(Field::Tag::BALL)) {
 		ReceiveBall();
 		return;
 	}
-	if (mHaveBall && !pCollidedWith->IsTag(mTag)) {
+	if (mHaveBall && !pCollidedWith->IsTag(mTag) && !dynamic_cast<RugbyMan*>(pCollidedWith)->IsImmune()) {
 		RugbyMan* pRugbyMan = dynamic_cast<RugbyMan*>(pCollidedWith);
 		mEnemyOnContact = true;
 		GiveTheBall(pRugbyMan);

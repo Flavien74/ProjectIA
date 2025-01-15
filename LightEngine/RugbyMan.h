@@ -31,9 +31,10 @@ private:
 
 	bool mEnemyOnContact = false;
 	bool mHaveBall;
+	bool mIsImmune = false;
 
 public:
-	float mImmuneTimeAfterCatch = 0.5f;
+	float mImmuneTimeAfterCatch = 2.8f;
 	float mPassCooldownAfterCatch = 0.5f;
 	float mAccelerationAfterCatch = 0.5f;
 
@@ -47,11 +48,14 @@ public:
 
 	int GetLane() const { return mLane; }
 
+	bool IsImmune() const { return mIsImmune; }
 	bool IsEnemyOnContact() const { return mEnemyOnContact; }
 	bool HaveBall() const { return mHaveBall; }
 	std::string GetName() const { return mName; }
 
 	void KeepInRect(class AABB rect);
+
+	void SetImmune(bool state) { mIsImmune = state; }
 
 	RugbyMan();
 	void PassBall(RugbyMan* to);

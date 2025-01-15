@@ -10,7 +10,7 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 
 	if (mTarget == nullptr)
 		return;
-	
+
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
 /// RAPH (haut) Flav (bas)
@@ -22,8 +22,15 @@ void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
-	mBallOwner = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
-	sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
+	mBallOwner = rugbyman->GetScene<Field>()->mBallOwner;
+	/*if (mBallOwner == nullptr)
+	{*/
+	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
+	rugbyman->SetDirection(dir, 0);
+	return;
+	//}
+
+	/*sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
 
 	if (rugbyman->GetTag() == Field::TEAMBLUE)
 	{
@@ -38,7 +45,7 @@ void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 	Utils::Normalize(direction);
 
 	direction *= Utils::GetDistance(mBallOwner->GetPosition().x, mBallOwner->GetPosition().y, rugbyman->GetPosition().x, rugbyman->GetPosition().y) - mBallOwner->GetAlliesDetectionRange() * .75f;
-	rugbyman->GoToPosition(direction.x, direction.y);
+	rugbyman->GoToPosition(direction.x, direction.y);*/
 	/////Cherche a se d�marquer
 }
 
@@ -52,7 +59,7 @@ void RugbyManAction_PossessBall::Start(RugbyMan* rugbyman)
 {
 	float newSpeed = rugbyman->GetSpeed() * mSpeedMultiplicator;
 	rugbyman->SetSpeed(newSpeed);
-	mIsImmune = true;
+	rugbyman->SetImmune(true);
 	mCanPass = false;
 	Field* pScene = rugbyman->GetScene<Field>();
 	pScene->mBallOwner = rugbyman;
@@ -65,7 +72,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	mAccelerationTimer += GameManager::Get()->GetDeltaTime();
 
 	if (mImmuneTimer < rugbyman->mImmuneTimeAfterCatch)
-		mIsImmune = false;
+		rugbyman->SetImmune(false);
 	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
 		mCanPass = true;
 	if (mPassCooldownTimer < rugbyman->mPassCooldownAfterCatch)
@@ -88,6 +95,15 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 		{
 			if (toPass->GetTag() != rugbyman->GetTag()) continue;
 
+			if (rugbyman->GetTag() == Field::TEAMBLUE)
+			{
+				if (toPass->GetPosition().x > rugbyman->GetPosition().x) continue;
+			}
+			else
+			{
+				if (toPass->GetPosition().x < rugbyman->GetPosition().x) continue;
+
+			}
 			float dist = Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y, toPass->GetPosition().x, toPass->GetPosition().y);
 			if (dist > rugbyman->GetAlliesDetectionRange())	continue;
 
@@ -103,5 +119,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 
 void RugbyManAction_PossessBall::End(RugbyMan* rugbyman)
 {
-	//transi
+		rugbyman->SetImmune(false);
+		mCanPass = true;
+		rugbyman->SetSpeed(rugbyman->GetSpeed());
 }
