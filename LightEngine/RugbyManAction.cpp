@@ -15,9 +15,6 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 
 void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
 {
-	sf::Vector2f baseDir = rugbyman->GetDirection();
-	float baseSpeed = rugbyman->GetSpeed();
-	rugbyman->SetDirection(baseDir.x, baseDir.y, baseSpeed);
 	//Se rapproche du joueur qui a la ball tout en respectant +/- sa range sans jamais le d�pacer
 }
 

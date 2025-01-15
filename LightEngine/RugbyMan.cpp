@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include "Resources.h"
 #include <iostream>
+#include "RugbyManAction.h"
 
 void RugbyMan::KeepInRect(AABB rect)
 {
@@ -26,9 +27,15 @@ void RugbyMan::KeepInRect(AABB rect)
 }
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake")
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(200), mEnemiesDetectionRange(100), mName("Jake"), mStateMachine(this, State::Count)
 {
 	mRigidBody = true;
+
+	{
+		Behaviour<RugbyMan>* pEnemyGotBall = mStateMachine.CreateBehaviour(State::EnemyGotBall);
+		pEnemyGotBall->AddAction<RugbyManAction_EnemyGotBall>();
+	}
+
 }
 
 void RugbyMan::PassBall(RugbyMan* to)
@@ -66,6 +73,17 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 	}
 	mSpeed = 50;
 	SetDirection(mDirection.x, mDirection.y, mSpeed);
+}
+
+const char* RugbyMan::GetStateName(State state) const
+{
+	switch (state)
+	{
+	case EnemyGotBall: return "Idle";
+	case WithoutBall: return "Shooting";
+	case PossessBall: return "Reloading";
+	default: return "Unknown";
+	}
 }
 
 void RugbyMan::OnUpdate()
