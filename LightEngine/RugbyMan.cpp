@@ -7,7 +7,7 @@
 #include "RugbyManCondition.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(100), mEnemiesDetectionRange(50), mName("Jake"), mStateMachine(this, State::Count)
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(100), mEnemiesDetectionRange(200), mName("Jake"), mStateMachine(this, State::Count)
 {
 	mRigidBody = true;
 
@@ -73,6 +73,22 @@ RugbyMan::RugbyMan() :
 	mStateMachine.SetState(State::WithoutBall);
 }
 
+void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
+{
+	mLane = lane;
+	mHaveBall = isBallMine;
+	DefautPos = spawn;
+	SetTag(tag);
+	/*if (IsTag(Field::Tag::TEAMBLUE)) {
+		mDirection = sf::Vector2f(0.5f, 0);
+	}
+	else {
+		mDirection = sf::Vector2f(-0.5f, 0);
+	}*/
+	mSpeed = 50;
+	SetDirection(mDirection.x, mDirection.y, mSpeed);
+}
+
 void RugbyMan::KeepInRect(AABB rect)
 {
 	if (GetPosition().x > rect.xMax)
@@ -112,23 +128,6 @@ void RugbyMan::PassBall(RugbyMan* to)
 	dynamic_cast<Field*>(GetScene())->mBall->SetDir(to->GetPosition());
 	dynamic_cast<Field*>(GetScene())->mBall->SetTag(Field::BALL);
 	LooseBall();
-}
-
-
-void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
-{
-	mLane = lane;
-	mHaveBall = isBallMine;
-	DefautPos = spawn;
-	SetTag(tag);
-	if (IsTag(Field::Tag::TEAMBLUE)) {
-		mDirection = sf::Vector2f(0.5f, 0);
-	}
-	else {
-		mDirection = sf::Vector2f(-0.5f, 0);
-	}
-	mSpeed = 50;
-	SetDirection(mDirection.x, mDirection.y, mSpeed);
 }
 
 const char* RugbyMan::GetStateName(State state) const
