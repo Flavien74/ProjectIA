@@ -1,12 +1,15 @@
 #include "RugbyManAction.h"
 #include "GameManager.h"
+#include "iostream"
 #include "Field.h"
 #include "Utils.h"
 
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
+	mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+
 	if (mTarget == nullptr)
-		mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+		return;
 
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
@@ -39,7 +42,6 @@ void RugbyManAction_PossessBall::Start(RugbyMan* rugbyman)
 	rugbyman->SetSpeed(newSpeed);
 	mIsImmune = true;
 	mCanPass = false;
-
 	Field* pScene = rugbyman->GetScene<Field>();
 	pScene->mBallOwner = rugbyman;
 }
@@ -61,20 +63,21 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	{
 		if (toDodge->GetTag() == rugbyman->GetTag()) continue;
 
-		if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
-			toDodge->GetPosition().x, toDodge->GetPosition().y) <= rugbyman->GetEnemiesDetectionRange())
-			continue;
-		
-		if (!mCanPass) 
-			continue;
+
+		float dist = Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y, toDodge->GetPosition().x, toDodge->GetPosition().y);
+
+		if (dist > rugbyman->GetEnemiesDetectionRange()) continue;
+
+
+		if (!mCanPass) continue;
+
 
 		for (RugbyMan* toPass : dynamic_cast<Field*>(rugbyman->GetScene())->mAllRugbyMan)
 		{
 			if (toPass->GetTag() != rugbyman->GetTag()) continue;
 
-			if (Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y,
-				toPass->GetPosition().x, toPass->GetPosition().y) <= rugbyman->GetAlliesDetectionRange())
-				continue;
+			float dist = Utils::GetDistance(rugbyman->GetPosition().x, rugbyman->GetPosition().y, toPass->GetPosition().x, toPass->GetPosition().y);
+			if (dist > rugbyman->GetAlliesDetectionRange())	continue;
 
 			rugbyman->PassBall(toPass);
 		}
