@@ -112,14 +112,14 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	}
 
 	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
-	rugbyman->GoToDirection(dir, rugbyman->mSpeed);
+	rugbyman->SetDirection(dir, 0);
 
 	/////cherche a marqu� et si il est marqu�, fait une passe au gadji le plus close
 }
 
 void RugbyManAction_PossessBall::End(RugbyMan* rugbyman)
 {
-		rugbyman->SetImmune(false);
-		mCanPass = true;
-		rugbyman->SetSpeed(rugbyman->GetSpeed());
+	rugbyman->SetImmune(false);
+	mCanPass = true;
+	rugbyman->SetSpeed(rugbyman->GetSpeed());
 }
