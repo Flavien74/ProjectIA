@@ -70,7 +70,9 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 {
 	mLane = lane;
 	mHaveBall = isBallMine;
-	DefautPos = spawn;
+	mDefautPos = spawn;
+	mSpeed = 50;
+	mDefaultSpeed = mSpeed;
 	SetTag(tag);
 	/*if (IsTag(Field::Tag::TEAMBLUE)) {
 		mDirection = sf::Vector2f(0.5f, 0);
@@ -78,7 +80,6 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 	else {
 		mDirection = sf::Vector2f(-0.5f, 0);
 	}*/
-	mSpeed = 50;
 	SetDirection(mDirection.x, mDirection.y, mSpeed);
 }
 
@@ -142,7 +143,6 @@ void RugbyMan::OnUpdate()
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)
 {
-
 	if (pCollidedWith->IsTag(Field::Tag::BALL)) {
 		ReceiveBall();
 		return;

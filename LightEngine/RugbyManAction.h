@@ -32,9 +32,6 @@ private:
 
 	float mSpeedMultiplicator = 1.2f;
 
-	bool mCanPass = false;
-	bool mIsImmune = false;
-
 public:
 	void Start(RugbyMan* rugbyman) override;
 	void Update(RugbyMan* rugbyman) override;
