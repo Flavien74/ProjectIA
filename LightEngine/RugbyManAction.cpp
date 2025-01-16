@@ -5,6 +5,7 @@
 #include "Ball.h"
 #include "Field.h"
 #include "Utils.h"
+#include "Debug.h"
 
 
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
@@ -126,9 +127,10 @@ void RugbyManAction_Drible::End(RugbyMan* rugbyman)
 }
 void RugbyManAction_PassBall::Start(RugbyMan* rugbyman)
 {
+	std::cout << "ui" << std::endl;
 	for (RugbyMan* toPass : rugbyman->GetScene<Field>()->mAllRugbyMan)
 	{
-		if (toPass->GetTag() != rugbyman->GetTag()) continue;
+		if (toPass->GetTag() != rugbyman->GetTag() || toPass == rugbyman) continue;
 
 		if (rugbyman->GetTag() == Field::TEAMBLUE)
 		{
@@ -146,7 +148,7 @@ void RugbyManAction_PassBall::Start(RugbyMan* rugbyman)
 		{
 			if (interceptor->IsTag(rugbyman->GetTag())) continue;
 
-			sf::Vector2f p = toPass->GetPosition() - rugbyman->GetPosition();
+			sf::Vector2f p = { toPass->GetPosition().x - rugbyman->GetPosition().x,  toPass->GetPosition().y - rugbyman->GetPosition().y };
 			float dAB = p.x * p.x + p.y * p.y;
 
 			float u = ((interceptor->GetPosition().x - rugbyman->GetPosition().x) *
@@ -156,12 +158,16 @@ void RugbyManAction_PassBall::Start(RugbyMan* rugbyman)
 
 			if (Utils::GetDistance(projet.x, projet.y, interceptor->GetPosition().x, interceptor->GetPosition().y) <=
 				Resources::BallSize + interceptor->GetRadius() * 1.5f)
-				continue;
+				return;
 
-			std::cout << "pass" << std::endl;
-			rugbyman->PassBall(toPass);
-			return;
+			Debug::DrawLine(projet.x, projet.y, interceptor->GetPosition().x, interceptor->GetPosition().y, sf::Color::Magenta);
+			std::cout << Utils::GetDistance(projet.x, projet.y, interceptor->GetPosition().x, interceptor->GetPosition().y) << std::endl;
+
 		}
+		Debug::DrawCircle(toPass->GetPosition().x, toPass->GetPosition().y, 10, sf::Color::Magenta);
+		std::cout << "passing the ball" << std::endl;
+		rugbyman->PassBall(toPass);
+		return;
 
 	}
 }
