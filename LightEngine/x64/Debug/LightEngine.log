@@ -1,4 +1,37 @@
-﻿  RugbyDebug.cpp
-C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(51,27): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\RugbyDebug.cpp(51,24): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+﻿  Field.cpp
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.h(9,8): warning C4099: 'AABB' : nom de type déjà rencontré avec 'class' et utilisant maintenant 'struct'
+  (compiler le fichier source 'Field.cpp')
+      C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.h(9,8):
+      voir la déclaration de 'AABB'
+  
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,56): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(41,42): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(55,29): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(56,29): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(79,71): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(80,71): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(82,55): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(82,33): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(83,72): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(83,53): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(83,34): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,79): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,79): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,79): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,79): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,79): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,50): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,50): warning C4244:         with
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,50): warning C4244:         [
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,50): warning C4244:             T=int
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(138,50): warning C4244:         ]
+C:\Users\matee\Documents\GitHub\ProjectIA\LightEngine\Field.cpp(146,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   LightEngine.vcxproj -> C:\Users\matee\Documents\GitHub\ProjectIA\x64\Debug\LightEngine.exe

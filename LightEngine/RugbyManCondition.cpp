@@ -1,7 +1,10 @@
 #include "RugbyManCondition.h"
 #include "Field.h"
 #include "Utils.h"
+#include "Debug.h"
 #include <iostream>
+#define _USE_MATH_DEFINES 
+#include <cmath>
 #include "RugbyManAction.h"
 
 bool RugbyManCondition_AllyGotBall::OnTest(RugbyMan* owner)
@@ -55,11 +58,11 @@ bool RugbyManCondition_BlockedByEnemies::OnTest(RugbyMan* owner)
 		if (Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
 			rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) > owner->GetEnemiesDetectionRange()) continue;
 
-		float dir = (owner->IsTag(Field::TEAMBLUE)) ? 1 : -1;
-		sf::Vector2f direction = { dir,0 };
-		if (Utils::GetAngleDegree(direction, rugbyMan->GetPosition() - owner->GetPosition()) > owner->GetEnemiesDetectionConeAngle()) continue;
-
-		numberOfEnemies++;
+		
+		if (Utils::GetAngleDegree(owner->GetDirection(), rugbyMan->GetPosition() - owner->GetPosition()) >= -owner->GetEnemiesDetectionConeAngle() &&
+			owner->GetEnemiesDetectionConeAngle() >= Utils::GetAngleDegree(owner->GetDirection(), rugbyMan->GetPosition() - owner->GetPosition()))
+			numberOfEnemies++;
+		
 	}
 	return numberOfEnemies > 1;
 }

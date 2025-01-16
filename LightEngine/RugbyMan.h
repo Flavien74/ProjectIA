@@ -16,6 +16,7 @@ private:
 		PossessBall,
 		Drible,
 		EnterPossession,
+		Pass,
 
 		Count
 	};

@@ -70,6 +70,12 @@ RugbyMan::RugbyMan() :
 			transition->AddCondition<RugbyManCondition_EnemyVisible>(true);
 			transition->AddCondition<RugbyManCondition_BlockedByEnemies>(false);
 		}
+		//-> PASSBALL
+		{
+			auto transition = pPossessBall->CreateTransition(State::Pass);
+
+			auto condition = transition->AddCondition<RugbyManCondition_BlockedByEnemies>(true);
+		}
 	}
 	//-> ENTERPOSSESSION
 	{
@@ -101,7 +107,25 @@ RugbyMan::RugbyMan() :
 
 			transition->AddCondition<RugbyManCondition_EnemyVisible>(false);
 		}
+	}
+	//-> PASSBALL
+	{
+		Behaviour<RugbyMan>* pPassBall = mStateMachine.CreateBehaviour(State::Pass);
+		pPassBall->AddAction<RugbyManAction_PassBall>();
 
+		//-> POSSESSBALL
+		{
+			auto transition = pPassBall->CreateTransition(State::PossessBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
+		}
+
+		//-> WHITHOUTBALL
+		{
+			auto transition = pPassBall->CreateTransition(State::WithoutBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(false);
+		}
 	}
 	mStateMachine.SetState(State::WithoutBall);
 }
