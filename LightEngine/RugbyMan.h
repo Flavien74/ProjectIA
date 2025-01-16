@@ -15,6 +15,7 @@ private:
 		WithoutBall,
 		PossessBall,
 		Drible,
+		EnterPossession,
 
 		Count
 	};
@@ -36,9 +37,9 @@ private:
 	bool mIsImmune = false;
 
 public:
-	float mImmuneTimeAfterCatch = .75f;
-	float mPassCooldownAfterCatch = 0.5f;
-	float mAccelerationAfterCatch = 0.5f;
+	float mImmuneTimeAfterCatch = 1.25f;
+	float mPassCooldownAfterCatch = 1;
+	float mAccelerationAfterCatch = 1;
 
 	float mDefaultSpeed;
 	bool mCanPass = false;
@@ -87,5 +88,6 @@ protected:
 	friend class RugbyManCondition_EnemyContact;
 	friend class RugbyManCondition_BlockedByEnemies;
 	friend class RugbyManCondition_EnemyVisible;
-	//friend class RugbyManCondition_CanPass;
+	friend class RugbyManCondition_CanPass;
+	friend class RugbyManAction_EnterPossession;
 };
