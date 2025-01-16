@@ -15,7 +15,13 @@ public:
 	bool OnTest(RugbyMan* owner) override;
 };
 
-class RugbyManCondition_Pass : public Condition<RugbyMan>
+class RugbyManCondition_CanPass : public Condition<RugbyMan>
+{
+public:
+	bool OnTest(RugbyMan* owner) override;
+};
+
+class RugbyManCondition_BlockedByEnemeis : public Condition<RugbyMan>
 {
 public:
 	bool OnTest(RugbyMan* owner) override;

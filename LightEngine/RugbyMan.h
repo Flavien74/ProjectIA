@@ -22,7 +22,9 @@ private:
 	float mSprintStrength;
 
 	float mAlliesDetectionRange;
+
 	float mEnemiesDetectionRange;
+	float mEnemiesDetectionConeAngle;
 
 	std::string mName;
 
@@ -44,8 +46,11 @@ public:
 	float GetSpeed() const { return mSpeed; }
 	sf::Vector2f GetDirection() const { return mDirection; }
 	sf::Vector2i GetDefaultPos() const { return DefautPos; }
+
 	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
+
 	float GetEnemiesDetectionRange() const { return mEnemiesDetectionRange; }
+	float GetEnemiesDetectionConeAngle() const { return mEnemiesDetectionConeAngle; }
 
 	int GetLane() const { return mLane; }
 
@@ -78,6 +83,6 @@ protected:
 	friend class RugbyManCondition_GetBall;
 	friend class RugbyManCondition_AllieGetBall;
 	friend class RugbyManCondition_EnemyContact;
-	friend class RugbyManCondition_Pass;
+	friend class RugbyManCondition_CanPass;
 	friend class RugbyManCondition_EnemyContact;
 };

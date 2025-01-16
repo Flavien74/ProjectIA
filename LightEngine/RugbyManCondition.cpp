@@ -1,6 +1,7 @@
 #include "RugbyManCondition.h"
 #include "Field.h"
 #include "Utils.h"
+#include <iostream>
 #include "RugbyManAction.h"
 
 bool RugbyManCondition_AllieGetBall::OnTest(RugbyMan* owner)
@@ -21,7 +22,7 @@ bool RugbyManCondition_GetBall::OnTest(RugbyMan* owner)
 	return false;
 }
 
-bool RugbyManCondition_Pass::OnTest(RugbyMan* owner)
+bool RugbyManCondition_CanPass::OnTest(RugbyMan* owner)
 {
 	bool condition1 = false;
 	bool condition2 = false;
@@ -41,4 +42,26 @@ bool RugbyManCondition_Pass::OnTest(RugbyMan* owner)
 		return true;
 	}
 	return false;
+}
+
+bool RugbyManCondition_BlockedByEnemeis::OnTest(RugbyMan* owner)
+{
+	int numberOfEnemies = 0;
+
+	for (RugbyMan* rugbyMan : owner->GetScene<Field>()->mAllRugbyMan)
+	{
+		if (rugbyMan->IsTag(owner->GetTag())) continue;
+
+		if (Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
+			rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) > owner->GetEnemiesDetectionRange()) continue;
+
+		float dir = (owner->IsTag(Field::TEAMBLUE)) ? 1 : -1;
+		sf::Vector2f direction = { dir,0 };
+		if (Utils::GetAngleDegree( direction, rugbyMan->GetPosition() - owner->GetPosition()) > owner->GetEnemiesDetectionConeAngle()) continue;
+
+		numberOfEnemies++;
+	}
+
+	std::cout << numberOfEnemies << std::endl;
+	return numberOfEnemies > 1;
 }

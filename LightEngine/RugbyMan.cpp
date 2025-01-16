@@ -7,7 +7,7 @@
 #include "RugbyManCondition.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mName("Jake"), mStateMachine(this, State::Count)
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mEnemiesDetectionConeAngle(45), mName("Jake"), mStateMachine(this, State::Count)
 {
 	mRigidBody = true;
 
