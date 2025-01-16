@@ -83,6 +83,6 @@ protected:
 	friend class RugbyManCondition_GetBall;
 	friend class RugbyManCondition_AllieGetBall;
 	friend class RugbyManCondition_EnemyContact;
-	friend class RugbyManCondition_CanPass;
+	//friend class RugbyManCondition_CanPass;
 	friend class RugbyManCondition_EnemyContact;
 };

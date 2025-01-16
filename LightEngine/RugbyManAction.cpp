@@ -6,7 +6,7 @@
 
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
-	mTarget = GetScene<Field>()->mBallOwner;
+	mTarget = rugbyman->GetScene<Field>()->mBallOwner;
 
 	if (mTarget == nullptr)
 		return;

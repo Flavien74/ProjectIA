@@ -28,7 +28,7 @@ bool RugbyManCondition_CanPass::OnTest(RugbyMan* owner)
 	bool condition2 = false;
 
 	for (auto rugbyMan : owner->GetScene<Field>()->mAllRugbyMan) {
-		if (!rugbyMan->IsTag(owner->mTag))
+		if (!rugbyMan->IsTag(owner->GetTag()))
 		{
 			condition1 = Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
 				rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) < owner->GetEnemiesDetectionRange();
