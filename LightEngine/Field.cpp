@@ -79,8 +79,8 @@ void Field::OnUpdate()
 	d.DrawLine(mTouchdownLines[0], 0, mTouchdownLines[0], GetWindowHeight(), sf::Color::White);
 	d.DrawLine(mTouchdownLines[1], 0, mTouchdownLines[1], GetWindowHeight(), sf::Color::White);
 
-	d.DrawLine(0, 0, GetWindowWidth(), GetWindowHeight() / 2, sf::Color::Red);
-	d.DrawLine(0, GetWindowHeight() / 2, GetWindowWidth(), GetWindowHeight(), sf::Color::Blue);
+	//d.DrawLine(0, 0, GetWindowWidth(), GetWindowHeight() / 2, sf::Color::Red);
+	//d.DrawLine(0, GetWindowHeight() / 2, GetWindowWidth(), GetWindowHeight(), sf::Color::Blue);
 	//d.DrawLine(0, GetWindowHeight() / 4, GetWindowWidth(), 3 * GetWindowHeight() / 4, sf::Color::Magenta);
 
 	if (mBallOwner != nullptr)IsPlayerScoring(mBallOwner);
