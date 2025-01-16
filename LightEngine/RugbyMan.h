@@ -14,6 +14,7 @@ private:
 		EnemyGotBall,
 		WithoutBall,
 		PossessBall,
+		Drible,
 
 		Count
 	};
@@ -79,10 +80,12 @@ protected:
 	friend class RugbyManAction_EnemyGotBall;
 	friend class RugbyManAction_WithoutBall;
 	friend class RugbyManAction_PossessBall;
+	friend class RugbyManAction_Drible;
 
 	friend class RugbyManCondition_GetBall;
 	friend class RugbyManCondition_AllieGetBall;
 	friend class RugbyManCondition_EnemyContact;
+	friend class RugbyManCondition_BlockedByEnemies;
+	friend class RugbyManCondition_EnemyVisible;
 	//friend class RugbyManCondition_CanPass;
-	friend class RugbyManCondition_EnemyContact;
 };

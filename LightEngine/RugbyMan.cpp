@@ -62,7 +62,28 @@ RugbyMan::RugbyMan() :
 
 			transition->AddCondition<RugbyManCondition_GetBall>(false);
 		}
+
+		/*//-> DRIBLE
+		{
+			auto transition = pPossessBall->CreateTransition(State::Drible);
+
+			transition->AddCondition<RugbyManCondition_EnemyVisible>(true);
+			transition->AddCondition<RugbyManCondition_BlockedByEnemies>(false);
+		}*/
 	}
+
+	/*//-> DRIBLE
+	{
+		Behaviour<RugbyMan>* pDrible = mStateMachine.CreateBehaviour(State::Drible);
+		pDrible->AddAction<RugbyManAction_Drible>();
+
+		//-> WHITHOUTBALL
+		{
+			auto transition = pDrible->CreateTransition(State::WithoutBall);
+
+			transition->AddCondition<RugbyManCondition_GetBall>(false);
+		}
+	}*/
 	mStateMachine.SetState(State::WithoutBall);
 }
 
@@ -167,5 +188,4 @@ void RugbyMan::ReceiveBall()
 void RugbyMan::LooseBall()
 {
 	mHaveBall = false;
-	GetScene<Field>()->ChangeBallOwner(this);
 }

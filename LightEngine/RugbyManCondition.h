@@ -21,7 +21,13 @@ public:
 	bool OnTest(RugbyMan* owner) override;
 };
 
-class RugbyManCondition_BlockedByEnemeis : public Condition<RugbyMan>
+class RugbyManCondition_BlockedByEnemies : public Condition<RugbyMan>
+{
+public:
+	bool OnTest(RugbyMan* owner) override;
+};
+
+class RugbyManCondition_EnemyVisible : public Condition<RugbyMan>
 {
 public:
 	bool OnTest(RugbyMan* owner) override;

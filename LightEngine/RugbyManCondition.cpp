@@ -44,7 +44,7 @@ bool RugbyManCondition_CanPass::OnTest(RugbyMan* owner)
 	return false;
 }
 
-bool RugbyManCondition_BlockedByEnemeis::OnTest(RugbyMan* owner)
+bool RugbyManCondition_BlockedByEnemies::OnTest(RugbyMan* owner)
 {
 	int numberOfEnemies = 0;
 
@@ -61,7 +61,21 @@ bool RugbyManCondition_BlockedByEnemeis::OnTest(RugbyMan* owner)
 
 		numberOfEnemies++;
 	}
-
-	std::cout << numberOfEnemies << std::endl;
 	return numberOfEnemies > 1;
+}
+
+bool RugbyManCondition_EnemyVisible::OnTest(RugbyMan* owner)
+{
+	bool condition = false;
+	for (auto rugbyMan : owner->GetScene<Field>()->mAllRugbyMan) {
+		if (!rugbyMan->IsTag(owner->GetTag()))
+		{
+			condition = Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
+				rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) < owner->GetEnemiesDetectionRange();
+			if (condition) {
+				return condition;
+			}
+		}
+	}
+	return condition;
 }
