@@ -18,6 +18,20 @@ void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
 	mBallOwner = rugbyman->GetScene<Field>()->mBallOwner;
+	
+	if (mBallOwner != nullptr && mBallOwner->IsTag(rugbyman->GetTag()))
+	{
+		if (rugbyman->GetTag() == Field::TEAMBLUE)
+		{
+			if (mBallOwner->GetPosition().x < rugbyman->GetPosition().x + rugbyman->mShape.getRadius()) return;
+		}
+		else
+		{
+			if (mBallOwner->GetPosition().x > rugbyman->GetPosition().x - rugbyman->mShape.getRadius()) return;
+		}
+	}
+
+	
 	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
 	rugbyman->SetDirection(dir, 0);
 	return;
@@ -98,6 +112,9 @@ void RugbyManAction_EnterPossession::Update(RugbyMan* rugbyman)
 		rugbyman->mCanPass = true;
 	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
 		rugbyman->SetSpeed(rugbyman->mDefaultSpeed);
+	
+	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
+	rugbyman->SetDirection(dir, 0);
 }
 
 void RugbyManAction_EnterPossession::End(RugbyMan* rugbyman)
