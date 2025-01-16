@@ -29,8 +29,8 @@ private:
 	std::string mName;
 
 	int mLane;
-	sf::Vector2i DefautPos;
-
+	sf::Vector2i mDefautPos;
+	bool mEnemyOnContact = false;
 	bool mHaveBall;
 	bool mIsImmune = false;
 
@@ -39,14 +39,14 @@ public:
 	float mPassCooldownAfterCatch = 0.5f;
 	float mAccelerationAfterCatch = 0.5f;
 
+	float mDefaultSpeed;
 	bool mCanPass = false;
 
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
 	sf::Vector2f GetDirection() const { return mDirection; }
-	sf::Vector2i GetDefaultPos() const { return DefautPos; }
-
+	sf::Vector2i GetDefaultPos() const { return mDefautPos; }
 	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
 
 	float GetEnemiesDetectionRange() const { return mEnemiesDetectionRange; }

@@ -70,16 +70,10 @@ void RugbyMan::OnStart(int tag, int lane, sf::Vector2i spawn, bool isBallMine)
 {
 	mLane = lane;
 	mHaveBall = isBallMine;
-	DefautPos = spawn;
-	SetTag(tag);
-	/*if (IsTag(Field::Tag::TEAMBLUE)) {
-		mDirection = sf::Vector2f(0.5f, 0);
-	}
-	else {
-		mDirection = sf::Vector2f(-0.5f, 0);
-	}*/
+	mDefautPos = spawn;
 	mSpeed = 50;
-	SetDirection(mDirection.x, mDirection.y, mSpeed);
+	mDefaultSpeed = mSpeed;
+	SetTag(tag);
 }
 
 void RugbyMan::KeepInRect(AABB rect)
@@ -110,21 +104,21 @@ void RugbyMan::SetImmune(bool state)
 
 void RugbyMan::PassBall(RugbyMan* to)
 {
-	if (dynamic_cast<Field*>(GetScene())->mBall != nullptr || to == this || to == nullptr) return;
-	dynamic_cast<Field*>(GetScene())->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
+	if (GetScene<Field>()->mBall != nullptr || to == this || to == nullptr) return;
+	GetScene<Field>()->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
 	sf::Vector2f direction = (to->GetPosition() - GetPosition());
 	//normalize direction
 	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
 
-	dynamic_cast<Field*>(GetScene())->mBall->SetPosition(
+	GetScene<Field>()->mBall->SetPosition(
 		GetPosition().x + direction.x * (Resources::PlayerSize + 5),
 		GetPosition().y + direction.y * (Resources::PlayerSize + 5));
 
-	dynamic_cast<Field*>(GetScene())->mBall->InitBall(this, to);
-	dynamic_cast<Field*>(GetScene())->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
-	dynamic_cast<Field*>(GetScene())->mBall->SetDir(to->GetPosition());
-	dynamic_cast<Field*>(GetScene())->mBall->SetTag(Field::BALL);
+	GetScene<Field>()->mBall->InitBall(this, to);
+	GetScene<Field>()->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
+	GetScene<Field>()->mBall->SetDir(to->GetPosition());
+	GetScene<Field>()->mBall->SetTag(Field::BALL);
 	LooseBall();
 }
 
@@ -141,13 +135,12 @@ const char* RugbyMan::GetStateName(State state) const
 
 void RugbyMan::OnUpdate()
 {
-	this->KeepInRect(dynamic_cast<Field*>(GetScene())->mLanes[mLane]);
+	this->KeepInRect(GetScene<Field>()->mLanes[mLane]);
 	mStateMachine.Update();
 }
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)
 {
-
 	if (pCollidedWith->IsTag(Field::Tag::BALL)) {
 		ReceiveBall();
 		return;
@@ -168,12 +161,11 @@ void RugbyMan::ReceiveBall()
 {
 	mIsImmune = true;
 	mHaveBall = true;
-	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(this);
+	GetScene<Field>()->ChangeBallOwner(this);
 }
 
 void RugbyMan::LooseBall()
 {
 	mHaveBall = false;
-	dynamic_cast<Field*>(GetScene())->ChangeBallOwner(nullptr);
+	GetScene<Field>()->ChangeBallOwner(this);
 }
-

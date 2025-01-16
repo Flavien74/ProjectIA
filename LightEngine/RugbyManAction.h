@@ -16,9 +16,9 @@ private:
 class RugbyManAction_WithoutBall : public Action <RugbyMan>
 {
 public:
-	void Start(RugbyMan* rugbyman) override;
+	void Start(RugbyMan* rugbyman) override{}
 	void Update(RugbyMan* rugbyman) override;
-	void End(RugbyMan* rugbyman) override;
+	void End(RugbyMan* rugbyman) override{}
 private:
 	RugbyMan* mBallOwner = nullptr;
 };
@@ -31,9 +31,6 @@ private:
 	float mAccelerationTimer = 0;
 
 	float mSpeedMultiplicator = 1.2f;
-
-	bool mCanPass = false;
-	bool mIsImmune = false;
 
 public:
 	void Start(RugbyMan* rugbyman) override;

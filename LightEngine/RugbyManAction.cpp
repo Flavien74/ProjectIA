@@ -6,54 +6,21 @@
 
 void RugbyManAction_EnemyGotBall::Update(RugbyMan* rugbyman)
 {
-	mTarget = dynamic_cast<Field*>(rugbyman->GetScene())->mBallOwner;
+	mTarget = GetScene<Field>()->mBallOwner;
 
 	if (mTarget == nullptr)
 		return;
 
 	rugbyman->GoToPosition(mTarget->GetPosition().x, mTarget->GetPosition().y);
 }
-/// RAPH (haut) Flav (bas)
-
-void RugbyManAction_WithoutBall::Start(RugbyMan* rugbyman)
-{
-
-}
 
 void RugbyManAction_WithoutBall::Update(RugbyMan* rugbyman)
 {
 	mBallOwner = rugbyman->GetScene<Field>()->mBallOwner;
-	/*if (mBallOwner == nullptr)
-	{*/
 	int dir = (rugbyman->IsTag(Field::TEAMBLUE)) ? 1 : -1;
 	rugbyman->SetDirection(dir, 0);
 	return;
-	//}
-
-	/*sf::Vector2f direction = mBallOwner->GetPosition() - rugbyman->GetPosition();
-
-	if (rugbyman->GetTag() == Field::TEAMBLUE)
-	{
-		if (rugbyman->GetPosition().x > mBallOwner->GetPosition().x) return;
-	}
-	else
-	{
-		if (rugbyman->GetPosition().x < mBallOwner->GetPosition().x) return;
-	}
-
-
-	Utils::Normalize(direction);
-
-	direction *= Utils::GetDistance(mBallOwner->GetPosition().x, mBallOwner->GetPosition().y, rugbyman->GetPosition().x, rugbyman->GetPosition().y) - mBallOwner->GetAlliesDetectionRange() * .75f;
-	rugbyman->GoToPosition(direction.x, direction.y);*/
-	/////Cherche a se d�marquer
 }
-
-void RugbyManAction_WithoutBall::End(RugbyMan* rugbyman)
-{
-	//transi
-}
-
 
 void RugbyManAction_PossessBall::Start(RugbyMan* rugbyman)
 {
@@ -79,7 +46,7 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
 		rugbyman->mCanPass = true;
 	if (mPassCooldownTimer > rugbyman->mPassCooldownAfterCatch)
-		rugbyman->SetSpeed(rugbyman->GetSpeed());
+		rugbyman->SetSpeed(rugbyman->mDefaultSpeed);
 
 	for (RugbyMan* toDodge : rugbyman->GetScene<Field>()->mAllRugbyMan)
 	{
@@ -123,6 +90,6 @@ void RugbyManAction_PossessBall::Update(RugbyMan* rugbyman)
 void RugbyManAction_PossessBall::End(RugbyMan* rugbyman)
 {
 	rugbyman->SetImmune(false);
-	mCanPass = true;
+	rugbyman->mCanPass = true;
 	rugbyman->SetSpeed(rugbyman->GetSpeed());
 }
