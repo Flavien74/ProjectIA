@@ -26,9 +26,9 @@ private:
 class RugbyManAction_PossessBall : public Action <RugbyMan>
 {
 public:
-	void Start(RugbyMan* rugbyman) override;
+	void Start(RugbyMan* rugbyman) override{}
 	void Update(RugbyMan* rugbyman) override;
-	void End(RugbyMan* rugbyman) override;
+	void End(RugbyMan* rugbyman) override{}
 };
 
 class RugbyManAction_EnterPossession : public Action <RugbyMan>

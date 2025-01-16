@@ -226,7 +226,6 @@ void RugbyMan::ReceiveBall()
 	mIsImmune = true;
 	mHaveBall = true;
 	GetScene<Field>()->ChangeBallOwner(this);
-	std::cout << "recieved" << std::endl;
 }
 
 void RugbyMan::LooseBall()
