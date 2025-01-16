@@ -14,17 +14,6 @@ void Field::OnInitialize()
 	std::cout << width << std::endl;
 	std::cout << height << std::endl;
 
-	mSpawns.push_back({ 50, 50 });
-	mSpawns.push_back({ 200, 100 });
-	mSpawns.push_back({ 320, 360 });
-	mSpawns.push_back({ 200, 620 });
-	mSpawns.push_back({ 50, 670 });
-	mSpawns.push_back({ 1230, 50 });
-	mSpawns.push_back({ 1080, 100 });
-	mSpawns.push_back({ 960, 360 });
-	mSpawns.push_back({ 1080, 620 });
-	mSpawns.push_back({ 1230, 670 });
-
 	mAllRugbyMan.push_back(CreateEntity<RugbyMan>(30, sf::Color::Green));
 	mAllRugbyMan.push_back(CreateEntity<RugbyMan>(30, sf::Color::Green));
 	mAllRugbyMan.push_back(CreateEntity<RugbyMan>(30, sf::Color::Green));
@@ -86,25 +75,6 @@ void Field::OnUpdate()
 	if (mBallOwner != nullptr)IsPlayerScoring(mBallOwner);
 }
 
-void Field::PassBall(RugbyMan* from, RugbyMan* to)
-{
-	mBall = CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
-	sf::Vector2f direction = (to->GetPosition() - from->GetPosition());
-	//normalize direction
-	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
-
-
-	mBall->SetPosition(
-		from->GetPosition().x + direction.x * (Resources::PlayerSize + 5),
-		from->GetPosition().y + direction.y * (Resources::PlayerSize + 5));
-
-	mBall->InitBall(from, to);
-	mBall->SetSpeed(Resources::BallSpeed * from->GetStrength());
-	mBall->SetDir(to->GetPosition());
-	mBall->SetTag(BALL);
-	from->LooseBall();
-}
-
 void Field::ChangeBallOwner(RugbyMan* newBallOwner)
 {
 	mBallOwner = newBallOwner;
@@ -118,16 +88,14 @@ void Field::IsPlayerScoring(RugbyMan* ballOwner)
 			ScoreBlue++;
 			Reset();
 			GiveTheBallRandom(5, 4);
+			return;
 		}
-
 	}
-	else {
-		if (ballOwner->GetPosition().x < mTouchdownLines[0])
-		{
-			ScoreRed++;
-			Reset();
-			GiveTheBallRandom(0, 5);
-		}
+	if (ballOwner->GetPosition().x < mTouchdownLines[0])
+	{
+		ScoreRed++;
+		Reset();
+		GiveTheBallRandom(0, 5);
 	}
 }
 

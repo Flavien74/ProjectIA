@@ -21,28 +21,6 @@ bool RugbyManCondition_GetBall::OnTest(RugbyMan* owner)
 	return false;
 }
 
-bool RugbyManCondition_CanPass::OnTest(RugbyMan* owner)
-{
-	bool condition1 = false;
-	bool condition2 = false;
-
-	for (auto rugbyMan : owner->GetScene<Field>()->mAllRugbyMan) {
-		if (!rugbyMan->IsTag(owner->GetTag()))
-		{
-			condition1 = Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
-				rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) < owner->GetEnemiesDetectionRange();
-		}
-		else {
-			condition2 = Utils::GetDistance(owner->GetPosition().x, owner->GetPosition().y,
-				rugbyMan->GetPosition().x, rugbyMan->GetPosition().y) < owner->GetAlliesDetectionRange();
-		}
-	}
-	if (condition1 && condition2) {
-		return true;
-	}
-	return false;
-}
-
 bool RugbyManCondition_BlockedByEnemies::OnTest(RugbyMan* owner)
 {
 	int numberOfEnemies = 0;

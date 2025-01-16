@@ -12,8 +12,8 @@ private:
 	void OnUpdate() override;
 	void OnCollision(Entity* collidedWith) override;
 	void OnDestroy() override;
-private:
 
+private:
 	sf::Vector2f mDestination;
 	RugbyMan* mFrom;
 	RugbyMan* mTo;

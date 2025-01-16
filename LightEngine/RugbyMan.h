@@ -23,18 +23,18 @@ private:
 
 	float mStrength;
 	float mSprintStrength;
-
 	float mSpeedMultiplicator;
 
 	float mAlliesDetectionRange;
 
 	float mEnemiesDetectionRange;
 	float mEnemiesDetectionConeAngle;
+	
+	int mLane;
 
 	std::string mName;
-
-	int mLane;
 	sf::Vector2i mDefautPos;
+
 	bool mEnemyOnContact = false;
 	bool mHaveBall;
 	bool mIsImmune = false;
@@ -47,13 +47,16 @@ public:
 	float mDefaultSpeed;
 	bool mCanPass = false;
 
+public:
+	RugbyMan();
+
 	float GetStrength() const { return mStrength; }
 	float GetSprintStrength() const { return mSprintStrength; }
 	float GetSpeed() const { return mSpeed; }
 	sf::Vector2f GetDirection() const { return mDirection; }
 	sf::Vector2i GetDefaultPos() const { return mDefautPos; }
-	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
 
+	float GetAlliesDetectionRange() const { return mAlliesDetectionRange; }
 	float GetEnemiesDetectionRange() const { return mEnemiesDetectionRange; }
 	float GetEnemiesDetectionConeAngle() const { return mEnemiesDetectionConeAngle; }
 
@@ -67,7 +70,6 @@ public:
 
 	void SetImmune(bool state);
 
-	RugbyMan();
 	void PassBall(RugbyMan* to);
 	void OnStart(int tag, int lane, sf::Vector2i spawn, bool);
 

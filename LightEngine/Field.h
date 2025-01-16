@@ -17,9 +17,6 @@ struct AABB
 class Field : public Scene
 {
 public:
-	void PassBall(RugbyMan* from, RugbyMan* to);
-
-public:
 	enum Tag
 	{
 		TEAMBLUE,
@@ -39,13 +36,26 @@ public:
 
 	std::vector<RugbyMan*> mAllRugbyMan;
 
-	std::vector<sf::Vector2i> mSpawns;
+	std::vector<sf::Vector2i> mSpawns
+	{
+		{ 50, 50 },
+		{ 200, 100 },
+		{ 320, 360 },
+		{ 200, 620 },
+		{ 50, 670 },
+		{ 1230, 50 },
+		{ 1080, 100 },
+		{ 960, 360 },
+		{ 1080, 620 },
+		{ 1230, 670 },
+	};
 
+public:
 	void OnInitialize() override;
 	void OnEvent(const sf::Event& event) override;
 	void OnUpdate() override;
 	void ChangeBallOwner(RugbyMan*);
 	void IsPlayerScoring(RugbyMan*);
 	void Reset();
-	void GiveTheBallRandom(int,int);
+	void GiveTheBallRandom(int, int);
 };

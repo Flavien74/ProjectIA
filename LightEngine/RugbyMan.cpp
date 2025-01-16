@@ -2,12 +2,11 @@
 #include "Field.h"
 #include "Ball.h"
 #include "Resources.h"
-#include <iostream>
 #include "RugbyManAction.h"
 #include "RugbyManCondition.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mEnemiesDetectionConeAngle(45), mName("Jake"), mStateMachine(this, State::Count), mSpeedMultiplicator(1.2)
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(250), mEnemiesDetectionRange(150), mEnemiesDetectionConeAngle(45), mName("Jake"), mStateMachine(this, State::Count), mSpeedMultiplicator(1.2)
 {
 	mRigidBody = true;
 
@@ -168,23 +167,24 @@ void RugbyMan::SetImmune(bool state)
 
 void RugbyMan::PassBall(RugbyMan* to)
 {
-	if (GetScene<Field>()->mBall != nullptr || to == this || to == nullptr) return;
-	GetScene<Field>()->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
+	Field* field = GetScene<Field>();
+	if (field->mBall != nullptr || to == this || to == nullptr) return;
+	field->mBall = GetScene()->CreateEntity<Ball>(Resources::BallSize, sf::Color::Yellow);
 	sf::Vector2f direction = (to->GetPosition() - GetPosition());
 	//normalize direction
 	direction = direction / std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
 
-	GetScene<Field>()->mBall->SetPosition(
+	field->mBall->SetPosition(
 		GetPosition().x + direction.x * (Resources::PlayerSize + 5),
 		GetPosition().y + direction.y * (Resources::PlayerSize + 5));
 
-	GetScene<Field>()->mBall->InitBall(this, to);
-	GetScene<Field>()->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
-	GetScene<Field>()->mBall->SetDir(to->GetPosition());
-	GetScene<Field>()->mBall->SetTag(Field::BALL);
+	field->mBall->InitBall(this, to);
+	field->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
+	field->mBall->SetDir(to->GetPosition());
+	field->mBall->SetTag(Field::BALL);
 	mHaveBall = false;
-	GetScene<Field>()->ChangeBallOwner(nullptr);
+	field->ChangeBallOwner(nullptr);
 }
 
 const char* RugbyMan::GetStateName(State state) const

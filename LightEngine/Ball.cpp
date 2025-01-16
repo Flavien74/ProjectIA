@@ -1,14 +1,10 @@
 #include "Ball.h"
-#include "RugbyMan.h"
-#include "Resources.h"
 #include "Field.h"
-#include <iostream>
 
 void Ball::InitBall(RugbyMan* from, RugbyMan* to)
 {
 	mFrom = from;
 	mTo = to;
-
 }
 
 void Ball::SetDir(sf::Vector2f destination)
