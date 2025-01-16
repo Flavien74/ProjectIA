@@ -20,12 +20,12 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pEnemyGotBall->CreateTransition(State::WithoutBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>(true);
+			auto condition = transition->AddCondition<RugbyManCondition_AllyGotBall>(true);
 		}
 
-		//-> POSSESSBALL
+		//-> ENTERPOSSESSION
 		{
-			auto transition = pEnemyGotBall->CreateTransition(State::PossessBall);
+			auto transition = pEnemyGotBall->CreateTransition(State::EnterPossession);
 
 			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
@@ -40,12 +40,12 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pWhitoutBall->CreateTransition(State::EnemyGotBall);
 
-			auto condition = transition->AddCondition<RugbyManCondition_AllieGetBall>(false);
+			auto condition = transition->AddCondition<RugbyManCondition_AllyGotBall>(false);
 		}
 
-		//-> POSSESSBALL
+		//-> ENTERPOSSESSION
 		{
-			auto transition = pWhitoutBall->CreateTransition(State::PossessBall);
+			auto transition = pWhitoutBall->CreateTransition(State::EnterPossession);
 
 			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(true);
 		}
@@ -60,7 +60,19 @@ RugbyMan::RugbyMan() :
 		{
 			auto transition = pPossessBall->CreateTransition(State::WithoutBall);
 
-			transition->AddCondition<RugbyManCondition_GetBall>(false);
+			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(false);
+		}
+	}
+	//-> ENTERPOSSESSION
+	{
+		Behaviour<RugbyMan>* pEnterPossession = mStateMachine.CreateBehaviour(State::EnterPossession);
+		pEnterPossession->AddAction<RugbyManAction_EnterPossession>();
+
+		//-> POSSESSBALL
+		{
+			auto transition = pEnterPossession->CreateTransition(State::PossessBall);
+
+			auto condition = transition->AddCondition<RugbyManCondition_SecuredBall>(true);
 		}
 	}
 	mStateMachine.SetState(State::WithoutBall);
@@ -119,7 +131,8 @@ void RugbyMan::PassBall(RugbyMan* to)
 	GetScene<Field>()->mBall->SetSpeed(Resources::BallSpeed * GetStrength());
 	GetScene<Field>()->mBall->SetDir(to->GetPosition());
 	GetScene<Field>()->mBall->SetTag(Field::BALL);
-	LooseBall();
+	mHaveBall = false;
+	GetScene<Field>()->ChangeBallOwner(nullptr);
 }
 
 const char* RugbyMan::GetStateName(State state) const
@@ -141,13 +154,12 @@ void RugbyMan::OnUpdate()
 
 void RugbyMan::OnCollision(Entity* pCollidedWith)
 {
-	if (pCollidedWith->IsTag(Field::Tag::BALL)) {
-		ReceiveBall();
-		return;
-	}
-	if (mHaveBall && pCollidedWith->GetTag() != mTag && !IsImmune()) {
+	if (mHaveBall && !pCollidedWith->IsTag(mTag) && !IsImmune()) {
 		RugbyMan* pRugbyMan = dynamic_cast<RugbyMan*>(pCollidedWith);
 		GiveTheBall(pRugbyMan);
+	}
+	else if (pCollidedWith->IsTag(Field::Tag::BALL)) {
+		ReceiveBall();
 	}
 }
 
@@ -162,10 +174,10 @@ void RugbyMan::ReceiveBall()
 	mIsImmune = true;
 	mHaveBall = true;
 	GetScene<Field>()->ChangeBallOwner(this);
+	std::cout << "recieved" << std::endl;
 }
 
 void RugbyMan::LooseBall()
 {
 	mHaveBall = false;
-	GetScene<Field>()->ChangeBallOwner(this);
 }

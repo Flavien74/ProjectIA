@@ -4,7 +4,7 @@
 #include <iostream>
 #include "RugbyManAction.h"
 
-bool RugbyManCondition_AllieGetBall::OnTest(RugbyMan* owner)
+bool RugbyManCondition_AllyGotBall::OnTest(RugbyMan* owner)
 {
 	for (auto rugbymen : owner->GetScene<Field>()->mAllRugbyMan)
 	{
@@ -44,7 +44,7 @@ bool RugbyManCondition_CanPass::OnTest(RugbyMan* owner)
 	return false;
 }
 
-bool RugbyManCondition_BlockedByEnemeis::OnTest(RugbyMan* owner)
+bool RugbyManCondition_BlockedByEnemies::OnTest(RugbyMan* owner)
 {
 	int numberOfEnemies = 0;
 
@@ -57,11 +57,16 @@ bool RugbyManCondition_BlockedByEnemeis::OnTest(RugbyMan* owner)
 
 		float dir = (owner->IsTag(Field::TEAMBLUE)) ? 1 : -1;
 		sf::Vector2f direction = { dir,0 };
-		if (Utils::GetAngleDegree( direction, rugbyMan->GetPosition() - owner->GetPosition()) > owner->GetEnemiesDetectionConeAngle()) continue;
+		if (Utils::GetAngleDegree(direction, rugbyMan->GetPosition() - owner->GetPosition()) > owner->GetEnemiesDetectionConeAngle()) continue;
 
 		numberOfEnemies++;
 	}
 
 	std::cout << numberOfEnemies << std::endl;
 	return numberOfEnemies > 1;
+}
+
+bool RugbyManCondition_SecuredBall::OnTest(RugbyMan* owner)
+{
+	return (!owner->IsImmune() && owner->mCanPass && owner->GetSpeed() == owner->mDefaultSpeed);
 }

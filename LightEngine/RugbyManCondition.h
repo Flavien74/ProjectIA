@@ -3,7 +3,7 @@
 #include "RugbyMan.h"
 
 
-class RugbyManCondition_AllieGetBall : public Condition<RugbyMan>
+class RugbyManCondition_AllyGotBall : public Condition<RugbyMan>
 {
 public:
 	bool OnTest(RugbyMan* owner) override;
@@ -21,7 +21,12 @@ public:
 	bool OnTest(RugbyMan* owner) override;
 };
 
-class RugbyManCondition_BlockedByEnemeis : public Condition<RugbyMan>
+class RugbyManCondition_BlockedByEnemies : public Condition<RugbyMan>
+{
+public:
+	bool OnTest(RugbyMan* owner) override;
+};
+class RugbyManCondition_SecuredBall: public Condition<RugbyMan>
 {
 public:
 	bool OnTest(RugbyMan* owner) override;
