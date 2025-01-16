@@ -111,8 +111,11 @@ void RugbyManAction_Drible::Update(RugbyMan* rugbyman)
 		if (Utils::GetAngleDegree(rugbyman->GetDirection(), toDodge->GetPosition() - rugbyman->GetPosition()) >= -rugbyman->GetEnemiesDetectionConeAngle() &&
 			rugbyman->GetEnemiesDetectionConeAngle() >= Utils::GetAngleDegree(rugbyman->GetDirection(), toDodge->GetPosition() - rugbyman->GetPosition()))
 		{
-			rugbyman->SetDirection(rugbyman->GetDirection().x, -1, rugbyman->GetSpeed());
+			if (toDodge->GetPosition().y > rugbyman->GetPosition().y)
+				rugbyman->SetDirection(rugbyman->GetDirection().x, -1, rugbyman->GetSpeed());
 
+			else 
+				rugbyman->SetDirection(rugbyman->GetDirection().x, 1, rugbyman->GetSpeed());
 		}
 	}
 }
