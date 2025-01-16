@@ -8,7 +8,7 @@ bool RugbyManCondition_AllyGotBall::OnTest(RugbyMan* owner)
 {
 	for (auto rugbymen : owner->GetScene<Field>()->mAllRugbyMan)
 	{
-		if (rugbymen->IsTag(owner->mTag) && rugbymen->HaveBall()) {
+		if (rugbymen->IsTag(owner->GetTag()) && rugbymen->HaveBall()) {
 			return true;
 		}
 	}
@@ -78,6 +78,8 @@ bool RugbyManCondition_EnemyVisible::OnTest(RugbyMan* owner)
 		}
 	}
 	return condition;
+}
+
 bool RugbyManCondition_SecuredBall::OnTest(RugbyMan* owner)
 {
 	return (!owner->IsImmune() && owner->mCanPass && owner->GetSpeed() == owner->mDefaultSpeed);

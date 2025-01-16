@@ -23,6 +23,8 @@ private:
 	float mStrength;
 	float mSprintStrength;
 
+	float mSpeedMultiplicator;
+
 	float mAlliesDetectionRange;
 
 	float mEnemiesDetectionRange;

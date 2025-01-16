@@ -7,7 +7,7 @@
 #include "RugbyManCondition.h"
 
 RugbyMan::RugbyMan() :
-	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mEnemiesDetectionConeAngle(45), mName("Jake"), mStateMachine(this, State::Count)
+	mStrength(10), mSprintStrength(10), mAlliesDetectionRange(150), mEnemiesDetectionRange(150), mEnemiesDetectionConeAngle(45), mName("Jake"), mStateMachine(this, State::Count), mSpeedMultiplicator(1.2)
 {
 	mRigidBody = true;
 
@@ -62,6 +62,14 @@ RugbyMan::RugbyMan() :
 
 			auto condition = transition->AddCondition<RugbyManCondition_GetBall>(false);
 		}
+
+		//-> DRIBLE
+		{
+			auto transition = pPossessBall->CreateTransition(State::Drible);
+
+			transition->AddCondition<RugbyManCondition_EnemyVisible>(true);
+			transition->AddCondition<RugbyManCondition_BlockedByEnemies>(false);
+		}
 	}
 	//-> ENTERPOSSESSION
 	{
@@ -74,17 +82,9 @@ RugbyMan::RugbyMan() :
 
 			auto condition = transition->AddCondition<RugbyManCondition_SecuredBall>(true);
 		}
-
-		/*//-> DRIBLE
-		{
-			auto transition = pPossessBall->CreateTransition(State::Drible);
-
-			transition->AddCondition<RugbyManCondition_EnemyVisible>(true);
-			transition->AddCondition<RugbyManCondition_BlockedByEnemies>(false);
-		}*/
 	}
 
-	/*//-> DRIBLE
+	//-> DRIBLE
 	{
 		Behaviour<RugbyMan>* pDrible = mStateMachine.CreateBehaviour(State::Drible);
 		pDrible->AddAction<RugbyManAction_Drible>();
@@ -95,7 +95,14 @@ RugbyMan::RugbyMan() :
 
 			transition->AddCondition<RugbyManCondition_GetBall>(false);
 		}
-	}*/
+		//-> POSSESSBALL
+		{
+			auto transition = pDrible->CreateTransition(State::PossessBall);
+
+			transition->AddCondition<RugbyManCondition_EnemyVisible>(false);
+		}
+
+	}
 	mStateMachine.SetState(State::WithoutBall);
 }
 

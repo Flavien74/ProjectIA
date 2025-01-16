@@ -62,10 +62,8 @@ void Field::OnInitialize()
 	GiveTheBallRandom(0, 10);
 
 	mLanes[0] = { 0, 0 ,GetWindowWidth(), GetWindowHeight() / 2 };
-	mLanes[1] = { 0, GetWindowHeight() / 2, GetWindowWidth(), GetWindowHeight() };
-	mLanes[2] = { 0, GetWindowHeight() / 4 ,GetWindowWidth(),3 * GetWindowHeight() / 4 };
-
-
+	mLanes[2] = { 0, GetWindowHeight() / 2, GetWindowWidth(), GetWindowHeight() };
+	mLanes[1] = { 0, GetWindowHeight() / 4 ,GetWindowWidth(),3 * GetWindowHeight() / 4 };
 }
 
 void Field::OnEvent(const sf::Event& event)

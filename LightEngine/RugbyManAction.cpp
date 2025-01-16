@@ -90,7 +90,7 @@ void RugbyManAction_PossessBall::End(RugbyMan* rugbyman)
 void RugbyManAction_EnterPossession::Start(RugbyMan* rugbyman)
 {
 	std::cout << "enter possession" << std::endl;
-	float newSpeed = rugbyman->GetSpeed() * mSpeedMultiplicator;
+	float newSpeed = rugbyman->GetSpeed() * rugbyman->mSpeedMultiplicator;
 	rugbyman->SetSpeed(newSpeed);
 	rugbyman->mCanPass = false;
 	rugbyman->SetImmune(true);
@@ -124,9 +124,15 @@ void RugbyManAction_EnterPossession::End(RugbyMan* rugbyman)
 	rugbyman->SetSpeed(rugbyman->mDefaultSpeed);
 }
 
+void RugbyManAction_Drible::Start(RugbyMan* rugbyman)
+{
+	float newSpeed = rugbyman->GetSpeed() * rugbyman->mSpeedMultiplicator;
+	rugbyman->SetSpeed(newSpeed);
+}
+
 void RugbyManAction_Drible::Update(RugbyMan* rugbyman)
 {
-	/*for (RugbyMan* toDodge : rugbyman->GetScene<Field>()->mAllRugbyMan)
+	for (RugbyMan* toDodge : rugbyman->GetScene<Field>()->mAllRugbyMan)
 	{
 		if (toDodge->GetTag() == rugbyman->GetTag()) continue;
 
@@ -135,10 +141,15 @@ void RugbyManAction_Drible::Update(RugbyMan* rugbyman)
 		if (dist > rugbyman->GetEnemiesDetectionRange()) continue;
 
 		if (toDodge->GetPosition().y > rugbyman->GetPosition().y) {
-			rugbyman->GoToDirection(rugbyman->GetDirection().x,-1);
+			rugbyman->SetDirection(rugbyman->GetDirection().x,-1, rugbyman->GetSpeed());
 		}
 		else {
-			rugbyman->GoToDirection(rugbyman->GetDirection().x, 1);
+			rugbyman->SetDirection(rugbyman->GetDirection().x, 1, rugbyman->GetSpeed());
 		}
-	}*/
+	}
+}
+
+void RugbyManAction_Drible::End(RugbyMan* rugbyman)
+{
+	rugbyman->SetSpeed(rugbyman->mDefaultSpeed);
 }

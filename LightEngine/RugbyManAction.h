@@ -38,8 +38,6 @@ private:
 	float mPassCooldownTimer = 0;
 	float mAccelerationTimer = 0;
 
-	float mSpeedMultiplicator = 1.2f;
-
 public:
 	void Start(RugbyMan* rugbyman) override;
 	void Update(RugbyMan* rugbyman) override;
@@ -49,7 +47,7 @@ public:
 class RugbyManAction_Drible : public Action <RugbyMan>
 {
 public:
-	void Start(RugbyMan* rugbyman) override {}
+	void Start(RugbyMan* rugbyman) override;
 	void Update(RugbyMan* rugbyman) override;
-	void End(RugbyMan* rugbyman) override {}
+	void End(RugbyMan* rugbyman) override;
 };
